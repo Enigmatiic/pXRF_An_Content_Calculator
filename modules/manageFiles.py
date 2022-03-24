@@ -63,9 +63,3 @@ class manageFile():
         pass
 
 
-mf = manageFile()
-
-workbook, sheetfile = mf.open_xlsx_file_('../data/JTSS_PRCS.xlsx')
-
-head_value, datas = mf.compile_xlsx_to_dict(workbook, sheetfile)
-
