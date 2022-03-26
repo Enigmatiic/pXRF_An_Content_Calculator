@@ -5,12 +5,13 @@ import modules.utils as utils
 import math
 
 
-class pxrfCalcul():
+class pxrfCalcul:
 
     def __init__(self):
         super(pxrfCalcul, self).__init__()
 
-    def is_plag(self, sample_data):
+    @staticmethod
+    def is_plag(sample_data):
         """
         Verify if data for sample given is plagioclase
         :param sample_data: element values for sample
@@ -24,10 +25,10 @@ class pxrfCalcul():
         if total > utils.TOTAL_LIMIT:
             total_verif = True
             for element in sample_data:
-                if element == utils.ELEMENT_K:
+                if element == utils.TEXT_ELEMENT_K:
                     if sample_data[element] < utils.ELEMENT_K_LIMIT:
                         element_k_verif = True
-                if element == utils.ELEMENT_P:
+                if element == utils.TEXT_ELEMENT_P:
                     if sample_data[element] < utils.ELEMENT_P_LIMIT:
                         element_p_verif = True
 
@@ -55,19 +56,6 @@ class pxrfCalcul():
             utils.remove_sample(sample, data_values)
         return data_values
 
-    def extract_elements(self, data):
-        """
-        Extract Si, Ca, Al value for each sample and create a dictionnary
-        :param data: dictionnary of all dataset
-        """
-        extract_elements = {}
-        for sample in data:
-            extract_elements[sample] = {}
-            for element in data[sample]:
-                if element == utils.ELEMENT_SI or element == utils.ELEMENT_AL or element == utils.ELEMENT_CA:
-                    extract_elements[sample][element] = data[sample][element]
-        return extract_elements
-
     def calcul_ratios(self, data):
         """
         Calcul Si ans Al ratio for all dataset
@@ -82,21 +70,23 @@ class pxrfCalcul():
 
         return data_ratio
 
-    def calcul_si_ratio(self, sample_data):
+    @staticmethod
+    def calcul_si_ratio(sample_data):
         """
         Calcul ratio [Ca/Si]
         :param sample_data: sample element value {Si, Al, Ca}
         :return: ratio in float value
         """
-        return sample_data[utils.ELEMENT_CA] / sample_data[utils.ELEMENT_SI]
+        return sample_data[utils.TEXT_ELEMENT_CA] / sample_data[utils.TEXT_ELEMENT_SI]
 
-    def calcul_al_ratio(self, sample_data):
+    @staticmethod
+    def calcul_al_ratio(sample_data):
         """
         Calcul ratio [Ca/Al]
         :param sample_data: sample element value {Si, Al, Ca}
         :return: ratio in float value
         """
-        return sample_data[utils.ELEMENT_CA] / sample_data[utils.ELEMENT_AL]
+        return sample_data[utils.TEXT_ELEMENT_CA] / sample_data[utils.TEXT_ELEMENT_AL]
 
     def calcul_an_content(self, data):
         """
@@ -107,26 +97,28 @@ class pxrfCalcul():
         data_an_content = {}
         for sample in data:
             data_an_content[str(sample)] = {}
-            data_an_content[str(sample)][utils.AN_CONTENT_RATIO_SI] = self.calcul_an_content_from_si_ratio(
+            data_an_content[str(sample)][utils.TEXT_AN_CONTENT_RATIO_SI] = self.calcul_an_content_from_si_ratio(
                 data[sample][utils.RATIO_SI])
-            data_an_content[str(sample)][utils.AN_CONTENT_RATIO_AL] = self.calcul_an_content_from_al_ratio(
+            data_an_content[str(sample)][utils.TEXT_AN_CONTENT_RATIO_AL] = self.calcul_an_content_from_al_ratio(
                 data[sample][utils.RATIO_AL])
 
         return data_an_content
 
-    def calcul_an_content_from_si_ratio(self, si_ratio):
+    @staticmethod
+    def calcul_an_content_from_si_ratio(si_ratio):
         """
         Calcul An Content from ratio (Si/Ca)
-        :param ratio:
+        :param si_ratio:
         :return:
         """
         return (utils.COEF_SI_RATIO_A + math.sqrt(
             utils.COEF_SI_RATIO_B + utils.COEF_SI_RATIO_C * si_ratio)) / utils.COEF_SI_RATIO_D
 
-    def calcul_an_content_from_al_ratio(self, al_ratio):
+    @staticmethod
+    def calcul_an_content_from_al_ratio(al_ratio):
         """
         Calcul An Content from ratio (Si/Ca)
-        :param ratio:
+        :param al_ratio:
         :return:
         """
         return (utils.COEF_AL_RATIO_A + math.sqrt(

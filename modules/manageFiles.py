@@ -4,12 +4,13 @@ Module for xls file manager
 from openpyxl import load_workbook, Workbook
 
 
-class manageFile():
+class manageFile:
     def __init__(self):
         """Init class"""
         super(manageFile, self).__init__()
 
-    def open_xlsx_file_(self, file_path):
+    @staticmethod
+    def open_xlsx_file_(file_path):
         """
         Open xlsx file
         :param file_path: Location address of the xlsx file
@@ -23,7 +24,8 @@ class manageFile():
         # Extract all values
         return wbook, wsheet[0]
 
-    def compile_xlsx_to_dict(self, workbook, sheetname):
+    @staticmethod
+    def compile_xlsx_to_dict(workbook, sheetname):
         """
         Compile file into a dictionnary
         :param workbook: xlsx workbook file
@@ -51,7 +53,7 @@ class manageFile():
                 if j == 0:  # Skip first value line
                     j += 1
                     continue
-                if value == '< LOD':  # Replace non-analyse element by 0
+                if not value.isdigit():  # Replace non-analyse element by 0
                     datas[str(row[0])][data_head[j]] = 0
                 else:
                     datas[str(row[0])][data_head[j]] = value
@@ -61,5 +63,3 @@ class manageFile():
 
     def create_xlsx_file(self):
         pass
-
-
