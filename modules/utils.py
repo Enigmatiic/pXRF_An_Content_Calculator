@@ -40,14 +40,14 @@ ELEMENT_K_LIMIT = 2
 # Formulas Coef for An Content Calcul From Ratio
 #
 COEF_SI_RATIO_A = -0.0038
-COEF_SI_RATIO_B = (1.2592 * math.pow(10. - 5))
-COEF_SI_RATIO_C = (1.2 * math.pow(10. - 4))
-COEF_SI_RATIO_D = (2 * (3 * math.pow(10. - 5)))
+COEF_SI_RATIO_B = (1.2592 * math.pow(10, -5))
+COEF_SI_RATIO_C = (1.2 * math.pow(10, -4))
+COEF_SI_RATIO_D = (2 * (3 * math.pow(10, -5)))
 
 COEF_AL_RATIO_A = -0.0107
-COEF_AL_RATIO_B = (1.21706 * math.pow(10. - 4))
-COEF_AL_RATIO_C = (1.6 * math.pow(10. - 4))
-COEF_AL_RATIO_D = (2 * (-4 * math.pow(10. - 5)))
+COEF_AL_RATIO_B = (1.21706 * math.pow(10, -4))
+COEF_AL_RATIO_C = (1.6 * math.pow(10, -4))
+COEF_AL_RATIO_D = (2 * (-4 * math.pow(10, -5)))
 
 #
 # Convertions Factors Oxyd To Element
@@ -209,6 +209,7 @@ def correction_factor_params(dataset, params):
             dataset[sample_name][params][TEXT_ELEMENT_SI] = stdev(si_values)
             dataset[sample_name][params][TEXT_ELEMENT_AL] = stdev(al_values)
             dataset[sample_name][params][TEXT_ELEMENT_CA] = stdev(ca_values)
+
 
 pre_correction_fact = {
     'MG-BCP-1A': {

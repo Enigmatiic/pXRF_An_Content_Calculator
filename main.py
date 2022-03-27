@@ -11,10 +11,12 @@ if __name__ == '__main__':
 
     DATAS = pxrf.format_data(DATAS)
 
-    ELEMENT_RATIO_DATA = pxrf.extract_elements(DATAS)
+    print(DATAS)
+
+    ELEMENT_RATIO_DATA = extract_elements(DATAS)
 
     print(ELEMENT_RATIO_DATA)
 
     ratios = pxrf.calcul_ratios(ELEMENT_RATIO_DATA)
 
-    # print(pxrf.calcul_an_content(ratios))
+    print(pxrf.calcul_an_content(ratios))
