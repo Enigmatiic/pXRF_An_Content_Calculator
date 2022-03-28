@@ -4,43 +4,45 @@ Module for xls file manager
 from openpyxl import load_workbook, Workbook
 
 
-class manageFile(load_workbook, Workbook):
+class ManageFile:
     def __init__(self):
         """Init class"""
-        super(manageFile, self).__init__()
+        super(ManageFile, self).__init__()
 
-    def open_xlsx_file_(self, file_path):
+    @staticmethod
+    def open_xlsx_file_(file_path):
         """
         Open xlsx file
         :param file_path: Location address of the xlsx file
-        :return: workbook and first sheetname who contain all datas
+        :return: workbook and first sheet name who contain all datas
         """
         # Address of the file on the local computer, i.e, path location
         loc_file = (str(file_path))
-        # To open Workbook we declare a hadling variable wb+
-        wbook = load_workbook(loc_file)
-        wsheet = wbook.sheetnames
+        # To open Workbook we declare a handling variable wb+
+        w_book = load_workbook(loc_file)
+        w_sheet = w_book.sheetnames
         # Extract all values
-        return wbook, wsheet[0]
+        return w_book, w_sheet[0]
 
-    def compile_xlsx_to_dict(self, workbook, sheetname):
+    @staticmethod
+    def compile_xlsx_to_dict(workbook, sheet_name):
         """
-        Compile file into a dictionnary
+        Compile file into a dictionary
+        :param sheet_name: active sheet_name of xlsx workbook file
         :param workbook: xlsx workbook file
-        :param sheetname: active sheetname of xlsx workbook file
-        :return: First line of workbook and  a dictionnary who contain all values
+        :return: First line of workbook and  a dictionary who contain all values
         """
         data_head = []
         datas = {}
         # Take first line like table Head
-        for row in workbook[sheetname].values:
+        for row in workbook[sheet_name].values:
             for value in row:
                 data_head.append(value.lower())
             break
 
-        # Compile values in a dictionnary
+        # Compile values in a dictionary
         i = 0
-        for row in workbook[sheetname].values:
+        for row in workbook[sheet_name].values:
             if i == 0:  # Skip first line
                 i += 1
                 continue
@@ -51,7 +53,7 @@ class manageFile(load_workbook, Workbook):
                 if j == 0:  # Skip first value line
                     j += 1
                     continue
-                if not str(value).isdigit():  # Replace non-analyse element by 0
+                if type(value).__name__ == 'str':  # Replace non-analyse element by 0
                     datas[str(row[0])][data_head[j]] = 0
                 else:
                     datas[str(row[0])][data_head[j]] = value

@@ -5,10 +5,10 @@ import modules.utils as utils
 import math
 
 
-class pxrfCalcul:
+class PxrfCalcul:
 
     def __init__(self):
-        super(pxrfCalcul, self).__init__()
+        super(PxrfCalcul, self).__init__()
 
     @staticmethod
     def is_plag(sample_data):
@@ -59,14 +59,14 @@ class pxrfCalcul:
     def calcul_ratios(self, data):
         """
         Calcul Si ans Al ratio for all dataset
-        :param data: dataset formated
+        :param data: dataset formatted
         :return:
         """
         data_ratio = {}
         for sample in data:
             data_ratio[str(sample)] = {}
-            data_ratio[str(sample)][utils.RATIO_SI] = self.calcul_si_ratio(data[sample])
-            data_ratio[str(sample)][utils.RATIO_AL] = self.calcul_al_ratio(data[sample])
+            data_ratio[str(sample)][utils.TEXT_RATIO_SI] = self.calcul_si_ratio(data[sample])
+            data_ratio[str(sample)][utils.TEXT_RATIO_AL] = self.calcul_al_ratio(data[sample])
 
         return data_ratio
 
@@ -91,16 +91,14 @@ class pxrfCalcul:
     def calcul_an_content(self, data):
         """
         Calcul An Content for all dataset
-        :param data: dataset formated
+        :param data: dataset formatted
         :return:
         """
         data_an_content = {}
         for sample in data:
             data_an_content[str(sample)] = {}
-            data_an_content[str(sample)][utils.TEXT_AN_CONTENT_RATIO_SI] = self.calcul_an_content_from_si_ratio(
-                data[sample][utils.RATIO_SI])
-            data_an_content[str(sample)][utils.TEXT_AN_CONTENT_RATIO_AL] = self.calcul_an_content_from_al_ratio(
-                data[sample][utils.RATIO_AL])
+            data_an_content[str(sample)][utils.TEXT_AN_CONTENT_RATIO_SI] = self.calcul_an_content_from_si_ratio(data[sample][utils.TEXT_RATIO_SI])
+            data_an_content[str(sample)][utils.TEXT_AN_CONTENT_RATIO_AL] = self.calcul_an_content_from_al_ratio(data[sample][utils.TEXT_RATIO_AL])
 
         return data_an_content
 
@@ -111,8 +109,7 @@ class pxrfCalcul:
         :param si_ratio:
         :return:
         """
-        return (utils.COEF_SI_RATIO_A + math.sqrt(
-            utils.COEF_SI_RATIO_B + utils.COEF_SI_RATIO_C * si_ratio)) / utils.COEF_SI_RATIO_D
+        return (utils.COEF_SI_RATIO_A + math.sqrt(utils.COEF_SI_RATIO_B + utils.COEF_SI_RATIO_C * si_ratio)) / utils.COEF_SI_RATIO_D
 
     @staticmethod
     def calcul_an_content_from_al_ratio(al_ratio):
@@ -121,5 +118,4 @@ class pxrfCalcul:
         :param al_ratio:
         :return:
         """
-        return (utils.COEF_AL_RATIO_A + math.sqrt(
-            utils.COEF_AL_RATIO_B - utils.COEF_AL_RATIO_C * al_ratio)) / utils.COEF_AL_RATIO_D
+        return (utils.COEF_AL_RATIO_A + math.sqrt(utils.COEF_AL_RATIO_B - utils.COEF_AL_RATIO_C * al_ratio)) / utils.COEF_AL_RATIO_D

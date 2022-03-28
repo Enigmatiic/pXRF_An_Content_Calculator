@@ -34,23 +34,23 @@ class Calibration:
         non_convertible_oxyde = {}
         for sample in calibration_data:
             calibration_chemical_element[sample] = {}
-            for oxyde in calibration_data[sample]:
-                if oxyde == utils.TEXT_CALIBRATION_AN_CONTENT:
+            for _oxide in calibration_data[sample]:
+                if _oxide == utils.TEXT_CALIBRATION_AN_CONTENT:
                     continue
-                element = oxyde[:1].lower()
+                element = _oxide[:1].lower()
                 if element in utils.CORRECTION_FACTORS:  # Took values from correction factor global variables and
-                    # convert oxyde to element
-                    calibration_chemical_element[sample][element] = calibration_data[sample][oxyde] * utils.CORRECTION_FACTORS[element]
+                    # convert _oxide to element
+                    calibration_chemical_element[sample][element] = calibration_data[sample][_oxide] * utils.CORRECTION_FACTORS[element]
                 else:
-                    non_convertible_oxyde[sample][oxyde] = calibration_data[sample][oxyde]
+                    non_convertible_oxyde[sample][_oxide] = calibration_data[sample][_oxide]
 
         return calibration_chemical_element, non_convertible_oxyde
 
     @staticmethod
     def extract_probe_calibration_pxrf_analysis(data):
         """
-        Extract Si, Ca, Al value for each sample and create a dictionnary
-        :param data: dictionnary of all dataset
+        Extract Si, Ca, Al value for each sample and create a dictionary
+        :param data: dictionary of all dataset
         """
         extract_elements = {}
         frequency_sample = utils.calibration_sample_frequencies(data)
@@ -85,5 +85,5 @@ class Calibration:
 
         # Average of correction factor
         utils.correction_factor_params(data_correction_fact, utils.TEXT_AVERAGE)
-        # Standart Deviation of correction factor
+        # Standard Deviation of correction factor
         utils.correction_factor_params(data_correction_fact, utils.TEXT_STD_DEVIATION)
