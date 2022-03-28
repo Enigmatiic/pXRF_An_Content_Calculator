@@ -211,6 +211,18 @@ def correction_factor_params(dataset, params):
             dataset[sample_name][params][TEXT_ELEMENT_CA] = stdev(ca_values)
 
 
+def relative_std_deviation(dataset):
+    for sample in dataset:
+        dataset[sample][TEXT_RELATIVE_STD_DEVIATION] = {}
+        for analysis_id in dataset[sample]:
+            if not analysis_id.isdigit():
+                continue
+            else:
+                dataset[sample][TEXT_RELATIVE_STD_DEVIATION][TEXT_ELEMENT_SI] = dataset[sample][TEXT_STD_DEVIATION][TEXT_ELEMENT_SI] / dataset[sample][TEXT_AVERAGE][TEXT_ELEMENT_SI]
+                dataset[sample][TEXT_RELATIVE_STD_DEVIATION][TEXT_ELEMENT_AL] = dataset[sample][TEXT_STD_DEVIATION][TEXT_ELEMENT_AL] / dataset[sample][TEXT_AVERAGE][TEXT_ELEMENT_AL]
+                dataset[sample][TEXT_RELATIVE_STD_DEVIATION][TEXT_ELEMENT_CA] = dataset[sample][TEXT_STD_DEVIATION][TEXT_ELEMENT_CA] / dataset[sample][TEXT_AVERAGE][TEXT_ELEMENT_CA]
+
+
 pre_correction_fact = {
     'MG-BCP-1A': {
         1: {
