@@ -84,6 +84,8 @@ class Calibration:
                         data_correction_fact[sample][sample_id][element] = probe[sample][element] / pxrf[sample][sample_id][element]
 
         # Average of correction factor
-        utils.correction_factor_params(data_correction_fact, utils.TEXT_AVERAGE)
+        utils.correction_factor_params(utils.TEXT_AVERAGE)
         # Standard Deviation of correction factor
-        utils.correction_factor_params(data_correction_fact, utils.TEXT_STD_DEVIATION)
+        utils.correction_factor_params(utils.TEXT_STD_DEVIATION)
+        # Relative Standard Deviation of correction factor
+        utils.relative_std_deviation()

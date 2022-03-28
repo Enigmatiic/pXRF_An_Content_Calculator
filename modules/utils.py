@@ -7,6 +7,7 @@ from statistics import mean, stdev
 
 HEAD_VALUE = []
 DATAS = {}
+CORRECTION_FACTOR = {}
 ELEMENT_RATIO_DATA = {}
 
 #
@@ -183,7 +184,7 @@ def calibration_sample_frequencies(dataset):
     return frequencies
 
 
-def correction_factor_params(dataset, params):
+def correction_factor_params(params):
     """
     ...
     :param dataset:
@@ -191,36 +192,36 @@ def correction_factor_params(dataset, params):
     :return:
     """
     si_values, al_values, ca_values = [], [], []
-    for sample_name in dataset:
-        dataset[sample_name][params] = {}
-        for analysis_id in dataset[sample_name]:
+    for sample_name in CORRECTION_FACTOR:
+        CORRECTION_FACTOR[sample_name][params] = {}
+        for analysis_id in CORRECTION_FACTOR[sample_name]:
             if not analysis_id.isdigit():
                 continue
             else:
-                si_values.append(dataset[sample_name][analysis_id][TEXT_ELEMENT_SI])
-                al_values.append(dataset[sample_name][analysis_id][TEXT_ELEMENT_AL])
-                ca_values.append(dataset[sample_name][analysis_id][TEXT_ELEMENT_CA])
+                si_values.append(CORRECTION_FACTOR[sample_name][analysis_id][TEXT_ELEMENT_SI])
+                al_values.append(CORRECTION_FACTOR[sample_name][analysis_id][TEXT_ELEMENT_AL])
+                ca_values.append(CORRECTION_FACTOR[sample_name][analysis_id][TEXT_ELEMENT_CA])
 
         if params == TEXT_AVERAGE:
-            dataset[sample_name][params][TEXT_ELEMENT_SI] = mean(si_values)
-            dataset[sample_name][params][TEXT_ELEMENT_AL] = mean(al_values)
-            dataset[sample_name][params][TEXT_ELEMENT_CA] = mean(ca_values)
+            CORRECTION_FACTOR[sample_name][params][TEXT_ELEMENT_SI] = mean(si_values)
+            CORRECTION_FACTOR[sample_name][params][TEXT_ELEMENT_AL] = mean(al_values)
+            CORRECTION_FACTOR[sample_name][params][TEXT_ELEMENT_CA] = mean(ca_values)
         elif params == TEXT_STD_DEVIATION:
-            dataset[sample_name][params][TEXT_ELEMENT_SI] = stdev(si_values)
-            dataset[sample_name][params][TEXT_ELEMENT_AL] = stdev(al_values)
-            dataset[sample_name][params][TEXT_ELEMENT_CA] = stdev(ca_values)
+            CORRECTION_FACTOR[sample_name][params][TEXT_ELEMENT_SI] = stdev(si_values)
+            CORRECTION_FACTOR[sample_name][params][TEXT_ELEMENT_AL] = stdev(al_values)
+            CORRECTION_FACTOR[sample_name][params][TEXT_ELEMENT_CA] = stdev(ca_values)
 
 
-def relative_std_deviation(dataset):
-    for sample in dataset:
-        dataset[sample][TEXT_RELATIVE_STD_DEVIATION] = {}
-        for analysis_id in dataset[sample]:
+def relative_std_deviation():
+    for sample in CORRECTION_FACTOR:
+        CORRECTION_FACTOR[sample][TEXT_RELATIVE_STD_DEVIATION] = {}
+        for analysis_id in CORRECTION_FACTOR[sample]:
             if not analysis_id.isdigit():
                 continue
             else:
-                dataset[sample][TEXT_RELATIVE_STD_DEVIATION][TEXT_ELEMENT_SI] = dataset[sample][TEXT_STD_DEVIATION][TEXT_ELEMENT_SI] / dataset[sample][TEXT_AVERAGE][TEXT_ELEMENT_SI]
-                dataset[sample][TEXT_RELATIVE_STD_DEVIATION][TEXT_ELEMENT_AL] = dataset[sample][TEXT_STD_DEVIATION][TEXT_ELEMENT_AL] / dataset[sample][TEXT_AVERAGE][TEXT_ELEMENT_AL]
-                dataset[sample][TEXT_RELATIVE_STD_DEVIATION][TEXT_ELEMENT_CA] = dataset[sample][TEXT_STD_DEVIATION][TEXT_ELEMENT_CA] / dataset[sample][TEXT_AVERAGE][TEXT_ELEMENT_CA]
+                CORRECTION_FACTOR[sample][TEXT_RELATIVE_STD_DEVIATION][TEXT_ELEMENT_SI] = CORRECTION_FACTOR[sample][TEXT_STD_DEVIATION][TEXT_ELEMENT_SI] / CORRECTION_FACTOR[sample][TEXT_AVERAGE][TEXT_ELEMENT_SI]
+                CORRECTION_FACTOR[sample][TEXT_RELATIVE_STD_DEVIATION][TEXT_ELEMENT_AL] = CORRECTION_FACTOR[sample][TEXT_STD_DEVIATION][TEXT_ELEMENT_AL] / CORRECTION_FACTOR[sample][TEXT_AVERAGE][TEXT_ELEMENT_AL]
+                CORRECTION_FACTOR[sample][TEXT_RELATIVE_STD_DEVIATION][TEXT_ELEMENT_CA] = CORRECTION_FACTOR[sample][TEXT_STD_DEVIATION][TEXT_ELEMENT_CA] / CORRECTION_FACTOR[sample][TEXT_AVERAGE][TEXT_ELEMENT_CA]
 
 
 pre_correction_fact = {
