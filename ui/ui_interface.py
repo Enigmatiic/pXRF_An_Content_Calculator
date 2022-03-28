@@ -9,17 +9,18 @@
 ################################################################################
 
 from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
-    QMetaObject, QObject, QPoint, QRect,
-    QSize, QTime, QUrl, Qt)
+                            QMetaObject, QObject, QPoint, QRect,
+                            QSize, QTime, QUrl, Qt)
 from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
-    QFont, QFontDatabase, QGradient, QIcon,
-    QImage, QKeySequence, QLinearGradient, QPainter,
-    QPalette, QPixmap, QRadialGradient, QTransform)
+                           QFont, QFontDatabase, QGradient, QIcon,
+                           QImage, QKeySequence, QLinearGradient, QPainter,
+                           QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QFrame,
-    QGraphicsView, QGridLayout, QGroupBox, QHeaderView,
-    QLabel, QListView, QListWidget, QListWidgetItem,
-    QMainWindow, QPushButton, QSizePolicy, QTabWidget,
-    QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget)
+                               QGraphicsView, QGridLayout, QGroupBox, QHeaderView,
+                               QLabel, QListView, QListWidget, QListWidgetItem,
+                               QMainWindow, QPushButton, QSizePolicy, QTabWidget,
+                               QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget)
+
 
 class Ui_interface_(object):
     def setupUi(self, interface_):
@@ -51,7 +52,6 @@ class Ui_interface_(object):
 
         self.verticalLayout_3.addWidget(self.lw_importedFiles)
 
-
         self.gridLayout.addWidget(self.frame_files_imported, 1, 0, 2, 2)
 
         self.frame_graphique = QFrame(self.centralwidget)
@@ -65,7 +65,6 @@ class Ui_interface_(object):
         self.gv_chart.viewport().setProperty("cursor", QCursor(Qt.CrossCursor))
 
         self.verticalLayout_4.addWidget(self.gv_chart)
-
 
         self.gridLayout.addWidget(self.frame_graphique, 1, 4, 8, 1)
 
@@ -104,7 +103,6 @@ class Ui_interface_(object):
 
         self.verticalLayout_23.addWidget(self.cb_unknowAnalysis)
 
-
         self.gridLayout.addWidget(self.gb_validation, 5, 0, 3, 2)
 
         self.gb_traitment = QGroupBox(self.centralwidget)
@@ -136,14 +134,13 @@ class Ui_interface_(object):
         self.pb_start.setFont(font2)
         self.pb_start.setCursor(QCursor(Qt.PointingHandCursor))
         self.pb_start.setStyleSheet(u"color: rgb(44, 202, 57);\n"
-"background-color: rgb(85, 255, 127);")
+                                    "background-color: rgb(85, 255, 127);")
         icon2 = QIcon()
         icon2.addFile(u"img/start.ico", QSize(), QIcon.Normal, QIcon.Off)
         self.pb_start.setIcon(icon2)
         self.pb_start.setFlat(True)
 
         self.verticalLayout_8.addWidget(self.pb_start)
-
 
         self.gridLayout.addWidget(self.gb_traitment, 9, 0, 1, 2)
 
@@ -166,7 +163,6 @@ class Ui_interface_(object):
 
         self.verticalLayout_7.addWidget(self.l_procedures)
 
-
         self.gridLayout.addWidget(self.frame_file_imported_title_2, 3, 0, 1, 2)
 
         self.frame_file_imported_title_3 = QFrame(self.centralwidget)
@@ -181,7 +177,6 @@ class Ui_interface_(object):
         self.l_general.setFont(font3)
 
         self.verticalLayout_22.addWidget(self.l_general)
-
 
         self.gridLayout.addWidget(self.frame_file_imported_title_3, 10, 0, 1, 2)
 
@@ -212,7 +207,6 @@ class Ui_interface_(object):
 
         self.gridLayout_2.addWidget(self.pb_newProject, 0, 0, 1, 1)
 
-
         self.gridLayout.addWidget(self.gb_project, 11, 0, 1, 2)
 
         self.frame_file_imported_title = QFrame(self.centralwidget)
@@ -231,10 +225,9 @@ class Ui_interface_(object):
         font4.setKerning(False)
         font4.setStyleStrategy(QFont.PreferAntialias)
         self.l_importedFile.setFont(font4)
-        self.l_importedFile.setAlignment(Qt.AlignBottom|Qt.AlignLeading|Qt.AlignLeft)
+        self.l_importedFile.setAlignment(Qt.AlignBottom | Qt.AlignLeading | Qt.AlignLeft)
 
         self.verticalLayout_2.addWidget(self.l_importedFile)
-
 
         self.gridLayout.addWidget(self.frame_file_imported_title, 0, 0, 1, 2)
 
@@ -263,7 +256,6 @@ class Ui_interface_(object):
 
         self.verticalLayout_9.addWidget(self.pb_formatPXRF)
 
-
         self.gridLayout.addWidget(self.gb_calibration, 8, 0, 1, 2)
 
         self.gb_resultCalcicite = QGroupBox(self.centralwidget)
@@ -282,7 +274,6 @@ class Ui_interface_(object):
         self.pb_extractResult.setFlat(False)
 
         self.verticalLayout_15.addWidget(self.pb_extractResult)
-
 
         self.gridLayout.addWidget(self.gb_resultCalcicite, 12, 0, 1, 2)
 
@@ -303,7 +294,6 @@ class Ui_interface_(object):
         self.label_graphique_title.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout.addWidget(self.label_graphique_title)
-
 
         self.gridLayout.addWidget(self.frame_graphique_title, 0, 4, 1, 1)
 
@@ -380,7 +370,6 @@ class Ui_interface_(object):
 
         self.verticalLayout_5.addWidget(self.tw_tabs)
 
-
         self.gridLayout.addWidget(self.frame_tabs, 9, 4, 4, 1)
 
         self.gb_importFile = QGroupBox(self.centralwidget)
@@ -413,18 +402,17 @@ class Ui_interface_(object):
 
         self.verticalLayout_6.addWidget(self.tb_browserFile)
 
-
         self.gridLayout.addWidget(self.gb_importFile, 4, 0, 1, 1)
 
-        interface_.setCentralWidget(self.centralwidget)
+        #interface_.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(interface_)
 
         self.pb_start.setDefault(True)
         self.tw_tabs.setCurrentIndex(0)
 
-
         QMetaObject.connectSlotsByName(interface_)
+
     # setupUi
 
     def retranslateUi(self, interface_):
@@ -463,4 +451,3 @@ class Ui_interface_(object):
 
         self.tb_browserFile.setText(QCoreApplication.translate("interface_", u"Parcourir ...", None))
     # retranslateUi
-

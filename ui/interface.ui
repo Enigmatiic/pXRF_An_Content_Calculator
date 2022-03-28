@@ -10,15 +10,9 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1661</width>
-    <height>1095</height>
+    <width>1063</width>
+    <height>786</height>
    </rect>
-  </property>
-  <property name="minimumSize">
-   <size>
-    <width>1661</width>
-    <height>1012</height>
-   </size>
   </property>
   <property name="font">
    <font>
@@ -31,54 +25,137 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="1" column="0" rowspan="2" colspan="2">
-     <widget class="QFrame" name="frame_files_imported">
+    <item row="0" column="0" colspan="3">
+     <widget class="QFrame" name="frame_app_title">
+      <property name="styleSheet">
+       <string notr="true">border-color: rgba(255, 255, 255, 0);</string>
+      </property>
       <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
+       <enum>QFrame::NoFrame</enum>
       </property>
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout_3">
+      <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <widget class="QListWidget" name="lw_importedFiles">
-         <property name="movement">
-          <enum>QListView::Static</enum>
+        <widget class="QLabel" name="label_app_title">
+         <property name="font">
+          <font>
+           <family>Poppins</family>
+           <pointsize>24</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
          </property>
-         <property name="spacing">
-          <number>2</number>
+         <property name="text">
+          <string>FLUROSCENCE X PORTATIVE - An Calculator</string>
          </property>
-         <property name="viewMode">
-          <enum>QListView::ListMode</enum>
+         <property name="scaledContents">
+          <bool>true</bool>
          </property>
-         <property name="batchSize">
-          <number>5</number>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
        </item>
       </layout>
      </widget>
     </item>
-    <item row="1" column="4" rowspan="8">
-     <widget class="QFrame" name="frame_graphique">
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
+    <item row="1" column="0">
+     <widget class="QGroupBox" name="gb_importFile">
+      <property name="font">
+       <font>
+        <family>Poppins</family>
+        <pointsize>10</pointsize>
+        <stylestrategy>PreferAntialias</stylestrategy>
+        <kerning>false</kerning>
+       </font>
       </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
+      <property name="title">
+       <string>Importer un fichier</string>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout_4">
+      <layout class="QVBoxLayout" name="verticalLayout_6">
        <item>
-        <widget class="QGraphicsView" name="gv_chart">
-         <property name="cursor" stdset="0">
-          <cursorShape>CrossCursor</cursorShape>
+        <widget class="QLabel" name="l_typeFile">
+         <property name="text">
+          <string>Type de données</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="cb_chooseTypeFile">
+         <property name="cursor">
+          <cursorShape>ArrowCursor</cursorShape>
+         </property>
+         <item>
+          <property name="text">
+           <string>- Choisir un type de donnée -</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Microsonde - Données de reférence</string>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>img/xlsx_.ico</normaloff>img/xlsx_.ico</iconset>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Analyses pXRF - Données de calibration</string>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>img/xlsx_.ico</normaloff>img/xlsx_.ico</iconset>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Analyses pXRF - Données inconnues</string>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>img/xlsx_.ico</normaloff>img/xlsx_.ico</iconset>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="tb_browserFile">
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="text">
+          <string>Parcourir ...</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>img/import.ico</normaloff>img/import.ico</iconset>
          </property>
         </widget>
        </item>
       </layout>
      </widget>
     </item>
-    <item row="5" column="0" rowspan="3" colspan="2">
+    <item row="1" column="1" rowspan="7">
+     <widget class="Line" name="verticalLine_divider">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="2" rowspan="4">
+     <widget class="QGraphicsView" name="gv_chart">
+      <property name="cursor" stdset="0">
+       <cursorShape>CrossCursor</cursorShape>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
      <widget class="QGroupBox" name="gb_validation">
       <property name="font">
        <font>
@@ -146,7 +223,58 @@
       </layout>
      </widget>
     </item>
-    <item row="9" column="0" colspan="2">
+    <item row="3" column="0">
+     <widget class="QGroupBox" name="gb_calibration">
+      <property name="font">
+       <font>
+        <family>Poppins</family>
+        <pointsize>10</pointsize>
+        <stylestrategy>PreferAntialias</stylestrategy>
+        <kerning>false</kerning>
+       </font>
+      </property>
+      <property name="title">
+       <string>Calibration</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_9">
+       <item>
+        <widget class="QPushButton" name="pb_formatProbe">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="text">
+          <string>Format -microsonde</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>img/format.ico</normaloff>img/format.ico</iconset>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pb_formatPXRF">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="text">
+          <string>Format - pXRF</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>img/format.ico</normaloff>img/format.ico</iconset>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="4" column="0" rowspan="2">
      <widget class="QGroupBox" name="gb_traitment">
       <property name="font">
        <font>
@@ -165,12 +293,6 @@
          <property name="enabled">
           <bool>false</bool>
          </property>
-         <property name="minimumSize">
-          <size>
-           <width>255</width>
-           <height>35</height>
-          </size>
-         </property>
          <property name="cursor">
           <cursorShape>PointingHandCursor</cursorShape>
          </property>
@@ -188,16 +310,11 @@
          <property name="enabled">
           <bool>false</bool>
          </property>
-         <property name="minimumSize">
-          <size>
-           <width>255</width>
-           <height>35</height>
-          </size>
-         </property>
          <property name="font">
           <font>
            <family>Poppins</family>
            <pointsize>11</pointsize>
+           <weight>75</weight>
            <bold>true</bold>
            <stylestrategy>PreferAntialias</stylestrategy>
            <kerning>false</kerning>
@@ -228,72 +345,45 @@ background-color: rgb(85, 255, 127);</string>
       </layout>
      </widget>
     </item>
-    <item row="3" column="0" colspan="2">
-     <widget class="QFrame" name="frame_file_imported_title_2">
-      <property name="enabled">
-       <bool>true</bool>
+    <item row="5" column="2" rowspan="3">
+     <widget class="QTabWidget" name="tw_tabs">
+      <property name="font">
+       <font>
+        <family>Poppins</family>
+        <pointsize>11</pointsize>
+       </font>
       </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
+      <property name="currentIndex">
+       <number>0</number>
       </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout_7">
-       <item>
-        <widget class="QLabel" name="l_procedures">
-         <property name="font">
-          <font>
-           <family>Poppins</family>
-           <pointsize>12</pointsize>
-           <bold>false</bold>
-           <stylestrategy>PreferAntialias</stylestrategy>
-           <kerning>false</kerning>
-          </font>
-         </property>
-         <property name="text">
-          <string>PROCÉDURES</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
+      <widget class="QWidget" name="tab_calibration_probe">
+       <attribute name="title">
+        <string>Calibration Microsonde</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="tab_calibration_pxrf">
+       <attribute name="title">
+        <string>Calibration pXRF</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="tab_correction_factor">
+       <attribute name="title">
+        <string>Facteur de correction</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="tab_pxrf_analysis">
+       <attribute name="title">
+        <string>Analyses pXRF</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="tab_results">
+       <attribute name="title">
+        <string>Résultats</string>
+       </attribute>
+      </widget>
      </widget>
     </item>
-    <item row="10" column="0" colspan="2">
-     <widget class="QFrame" name="frame_file_imported_title_3">
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout_22">
-       <item>
-        <widget class="QLabel" name="l_general">
-         <property name="minimumSize">
-          <size>
-           <width>255</width>
-           <height>35</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>Poppins</family>
-           <pointsize>12</pointsize>
-           <bold>false</bold>
-           <stylestrategy>PreferAntialias</stylestrategy>
-           <kerning>false</kerning>
-          </font>
-         </property>
-         <property name="text">
-          <string>GÉNÉRAL</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </item>
-    <item row="11" column="0" colspan="2">
+    <item row="6" column="0">
      <widget class="QGroupBox" name="gb_project">
       <property name="enabled">
        <bool>false</bool>
@@ -310,14 +400,8 @@ background-color: rgb(85, 255, 127);</string>
        <string>Projets</string>
       </property>
       <layout class="QGridLayout" name="gridLayout_2">
-       <item row="1" column="0">
+       <item row="2" column="0">
         <widget class="QPushButton" name="pb_openProject">
-         <property name="minimumSize">
-          <size>
-           <width>255</width>
-           <height>25</height>
-          </size>
-         </property>
          <property name="cursor">
           <cursorShape>ForbiddenCursor</cursorShape>
          </property>
@@ -326,14 +410,8 @@ background-color: rgb(85, 255, 127);</string>
          </property>
         </widget>
        </item>
-       <item row="2" column="0">
+       <item row="3" column="0">
         <widget class="QPushButton" name="pb_saveProject">
-         <property name="minimumSize">
-          <size>
-           <width>255</width>
-           <height>25</height>
-          </size>
-         </property>
          <property name="cursor">
           <cursorShape>ForbiddenCursor</cursorShape>
          </property>
@@ -344,12 +422,6 @@ background-color: rgb(85, 255, 127);</string>
        </item>
        <item row="0" column="0">
         <widget class="QPushButton" name="pb_newProject">
-         <property name="minimumSize">
-          <size>
-           <width>255</width>
-           <height>25</height>
-          </size>
-         </property>
          <property name="cursor">
           <cursorShape>ForbiddenCursor</cursorShape>
          </property>
@@ -361,102 +433,7 @@ background-color: rgb(85, 255, 127);</string>
       </layout>
      </widget>
     </item>
-    <item row="0" column="0" colspan="2">
-     <widget class="QFrame" name="frame_file_imported_title">
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout_2">
-       <item>
-        <widget class="QLabel" name="l_importedFile">
-         <property name="font">
-          <font>
-           <family>Poppins</family>
-           <pointsize>12</pointsize>
-           <bold>false</bold>
-           <underline>false</underline>
-           <stylestrategy>PreferAntialias</stylestrategy>
-           <kerning>false</kerning>
-          </font>
-         </property>
-         <property name="text">
-          <string>FICHIERS IMPORTÉS</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </item>
-    <item row="8" column="0" colspan="2">
-     <widget class="QGroupBox" name="gb_calibration">
-      <property name="font">
-       <font>
-        <family>Poppins</family>
-        <pointsize>10</pointsize>
-        <stylestrategy>PreferAntialias</stylestrategy>
-        <kerning>false</kerning>
-       </font>
-      </property>
-      <property name="title">
-       <string>Calibration</string>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout_9">
-       <item>
-        <widget class="QPushButton" name="pb_formatProbe">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>255</width>
-           <height>35</height>
-          </size>
-         </property>
-         <property name="cursor">
-          <cursorShape>PointingHandCursor</cursorShape>
-         </property>
-         <property name="text">
-          <string>Format -microsonde</string>
-         </property>
-         <property name="icon">
-          <iconset>
-           <normaloff>img/format.ico</normaloff>img/format.ico</iconset>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pb_formatPXRF">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>255</width>
-           <height>35</height>
-          </size>
-         </property>
-         <property name="cursor">
-          <cursorShape>PointingHandCursor</cursorShape>
-         </property>
-         <property name="text">
-          <string>Format - pXRF</string>
-         </property>
-         <property name="icon">
-          <iconset>
-           <normaloff>img/format.ico</normaloff>img/format.ico</iconset>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </item>
-    <item row="12" column="0" colspan="2">
+    <item row="7" column="0">
      <widget class="QGroupBox" name="gb_resultCalcicite">
       <property name="font">
        <font>
@@ -475,12 +452,6 @@ background-color: rgb(85, 255, 127);</string>
          <property name="enabled">
           <bool>false</bool>
          </property>
-         <property name="minimumSize">
-          <size>
-           <width>255</width>
-           <height>35</height>
-          </size>
-         </property>
          <property name="cursor">
           <cursorShape>PointingHandCursor</cursorShape>
          </property>
@@ -493,209 +464,6 @@ background-color: rgb(85, 255, 127);</string>
          </property>
          <property name="flat">
           <bool>false</bool>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </item>
-    <item row="0" column="4">
-     <widget class="QFrame" name="frame_graphique_title">
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <item>
-        <widget class="QLabel" name="label_graphique_title">
-         <property name="font">
-          <font>
-           <family>Poppins</family>
-           <pointsize>24</pointsize>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>CALCICITÉ PLAGIOCLASE PAR FLUORESCENCE X PORTATIVE</string>
-         </property>
-         <property name="scaledContents">
-          <bool>true</bool>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </item>
-    <item row="1" column="3" rowspan="12">
-     <widget class="Line" name="verticalLine_divider">
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-     </widget>
-    </item>
-    <item row="9" column="4" rowspan="4">
-     <widget class="QFrame" name="frame_tabs">
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout_5">
-       <item>
-        <widget class="QTabWidget" name="tw_tabs">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>390</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>Poppins</family>
-           <pointsize>11</pointsize>
-          </font>
-         </property>
-         <property name="currentIndex">
-          <number>0</number>
-         </property>
-         <widget class="QWidget" name="tab_calibration_probe">
-          <attribute name="title">
-           <string>Calibration Microsonde</string>
-          </attribute>
-          <layout class="QVBoxLayout" name="verticalLayout_12">
-           <item>
-            <widget class="QTableWidget" name="table_probeCalibration"/>
-           </item>
-          </layout>
-         </widget>
-         <widget class="QWidget" name="tab_calibration_pxrf">
-          <attribute name="title">
-           <string>Calibration pXRF</string>
-          </attribute>
-          <layout class="QVBoxLayout" name="verticalLayout_10">
-           <item>
-            <widget class="QTableWidget" name="table_calibrationPXRF"/>
-           </item>
-          </layout>
-         </widget>
-         <widget class="QWidget" name="tab_correction_factor">
-          <attribute name="title">
-           <string>Facteur de correction</string>
-          </attribute>
-          <layout class="QVBoxLayout" name="verticalLayout_13">
-           <item>
-            <widget class="QTableWidget" name="table_correctionFactor"/>
-           </item>
-          </layout>
-         </widget>
-         <widget class="QWidget" name="tab_pxrf_analysis">
-          <attribute name="title">
-           <string>Analyses pXRF</string>
-          </attribute>
-          <layout class="QVBoxLayout" name="verticalLayout_14">
-           <item>
-            <widget class="QTableWidget" name="table_pxrfAnalysis"/>
-           </item>
-          </layout>
-         </widget>
-         <widget class="QWidget" name="tab_results">
-          <attribute name="title">
-           <string>Résultats</string>
-          </attribute>
-          <layout class="QVBoxLayout" name="verticalLayout_11">
-           <item>
-            <widget class="QTableWidget" name="table_resultAnContent"/>
-           </item>
-          </layout>
-         </widget>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </item>
-    <item row="4" column="0">
-     <widget class="QGroupBox" name="gb_importFile">
-      <property name="font">
-       <font>
-        <family>Poppins</family>
-        <pointsize>10</pointsize>
-        <stylestrategy>PreferAntialias</stylestrategy>
-        <kerning>false</kerning>
-       </font>
-      </property>
-      <property name="title">
-       <string>Importer un fichier</string>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout_6">
-       <item>
-        <widget class="QLabel" name="l_typeFile">
-         <property name="text">
-          <string>Type de données</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QComboBox" name="cb_chooseTypeFile">
-         <property name="cursor">
-          <cursorShape>ArrowCursor</cursorShape>
-         </property>
-         <item>
-          <property name="text">
-           <string>- Choisir un type de donnée -</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Microsonde - Données de reférence</string>
-          </property>
-          <property name="icon">
-           <iconset>
-            <normaloff>img/xlsx_.ico</normaloff>img/xlsx_.ico</iconset>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Analyses pXRF - Données de calibration</string>
-          </property>
-          <property name="icon">
-           <iconset>
-            <normaloff>img/xlsx_.ico</normaloff>img/xlsx_.ico</iconset>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Analyses pXRF - Données inconnues</string>
-          </property>
-          <property name="icon">
-           <iconset>
-            <normaloff>img/xlsx_.ico</normaloff>img/xlsx_.ico</iconset>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="tb_browserFile">
-         <property name="minimumSize">
-          <size>
-           <width>255</width>
-           <height>35</height>
-          </size>
-         </property>
-         <property name="cursor">
-          <cursorShape>PointingHandCursor</cursorShape>
-         </property>
-         <property name="text">
-          <string>Parcourir ...</string>
-         </property>
-         <property name="icon">
-          <iconset>
-           <normaloff>img/import.ico</normaloff>img/import.ico</iconset>
          </property>
         </widget>
        </item>
