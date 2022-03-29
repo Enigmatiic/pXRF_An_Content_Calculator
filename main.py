@@ -17,6 +17,40 @@ class PxrfAnCalculator(Ui_Form, QtWidgets.QWidget, ManageFile, Calibration, Pxrf
         # self.setupRaccourcisClaviers()
         self.show()
 
+    @staticmethod
+    def import_files():
+        pass
+
+    def format_probe(self):
+        pass
+    
+    def format_pxrf(self):
+        pass
+
+    def correction_factor_calculate(self):
+        pass
+
+    def lunch_traitment(self):
+        pass
+
+    def extract_result(self):
+        pass
+
+    def draw_chart(self):
+        pass
+
+    def draw_table(self, dataset):
+        pass
+
+    def new_project(self):
+        pass
+
+    def open_project(self):
+        pass
+
+    def save_project(self):
+        pass
+
 
 # if __name__ == '__main__':
 # mf = ManageFile()
