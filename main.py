@@ -1,5 +1,5 @@
 from PySide6 import QtGui, QtCore, QtWidgets
-from ui.ui_interface import Ui_interface_
+from ui.ui_interface import Ui_Form
 from functools import partial
 from modules.calibration import Calibration
 from modules.manageFiles import ManageFile
@@ -7,7 +7,7 @@ from modules.pxrfCalcul import PxrfCalcul
 from modules.utils import *
 
 
-class PxrfAnCalculator(Ui_interface_, QtWidgets.QWidget, ManageFile, Calibration, PxrfCalcul):
+class PxrfAnCalculator(Ui_Form, QtWidgets.QWidget, ManageFile, Calibration, PxrfCalcul):
     def __init__(self):
         super(PxrfAnCalculator, self).__init__()
         # Init Window
@@ -56,4 +56,4 @@ class PxrfAnCalculator(Ui_interface_, QtWidgets.QWidget, ManageFile, Calibration
 
 MainWindow = QtWidgets.QApplication([])
 AnCalculator = PxrfAnCalculator()
-MainWindow.exec_()
+MainWindow.exec()
