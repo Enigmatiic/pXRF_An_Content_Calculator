@@ -4,6 +4,7 @@
 import modules.utils as utils
 from statistics import mean
 
+
 class Calibration:
     def __init__(self):
         super(Calibration, self).__init__()

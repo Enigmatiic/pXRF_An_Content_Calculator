@@ -1,56 +1,11 @@
-from PySide6 import QtGui, QtCore, QtWidgets
-from ui.ui_interface import Ui_Form
-from functools import partial
-from modules.calibration import Calibration
-from modules.manageFiles import ManageFile
-from modules.pxrfCalcul import PxrfCalcul
-from modules.utils import *
+import sys
 
+from PySide6 import QtWidgets
+from PySide6.QtCore import QCoreApplication
+from PySide6.QtGui import QPixmap
+from PySide6.QtWidgets import QSplashScreen, QMainWindow
 
-class PxrfAnCalculator(Ui_Form, QtWidgets.QWidget, ManageFile, Calibration, PxrfCalcul):
-    def __init__(self):
-        super(PxrfAnCalculator, self).__init__()
-        # Init Window
-        self.setupUi(self)
-        # self.modificationSetupUi()
-        # self.setupConnections()
-        # self.setupRaccourcisClaviers()
-        self.show()
-
-    @staticmethod
-    def import_files():
-        pass
-
-    def format_probe(self):
-        pass
-    
-    def format_pxrf(self):
-        pass
-
-    def correction_factor_calculate(self):
-        pass
-
-    def lunch_traitment(self):
-        pass
-
-    def extract_result(self):
-        pass
-
-    def draw_chart(self):
-        pass
-
-    def draw_table(self, dataset):
-        pass
-
-    def new_project(self):
-        pass
-
-    def open_project(self):
-        pass
-
-    def save_project(self):
-        pass
-
+from modules.pxrfAnCalculator import PxrfAnCalculator
 
 # if __name__ == '__main__':
 # mf = ManageFile()
@@ -88,6 +43,12 @@ class PxrfAnCalculator(Ui_Form, QtWidgets.QWidget, ManageFile, Calibration, Pxrf
 # an_content = pxrf.calcul_an_content(ratios)
 # print('An Content: ', an_content)
 
-MainWindow = QtWidgets.QApplication([])
+app = QtWidgets.QApplication(sys.argv)
+
+pixmap = QPixmap("ui/img/logo.png")
+splash = QSplashScreen(pixmap)
+splash.show()
+app.processEvents()
 AnCalculator = PxrfAnCalculator()
-MainWindow.exec()
+splash.finish(AnCalculator)
+app.exec()

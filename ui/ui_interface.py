@@ -9,16 +9,17 @@
 ################################################################################
 
 from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
-    QMetaObject, QObject, QPoint, QRect,
-    QSize, QTime, QUrl, Qt)
+                            QMetaObject, QObject, QPoint, QRect,
+                            QSize, QTime, QUrl, Qt)
 from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
-    QFont, QFontDatabase, QGradient, QIcon,
-    QImage, QKeySequence, QLinearGradient, QPainter,
-    QPalette, QPixmap, QRadialGradient, QTransform)
+                           QFont, QFontDatabase, QGradient, QIcon,
+                           QImage, QKeySequence, QLinearGradient, QPainter,
+                           QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QFrame,
-    QGraphicsView, QGridLayout, QGroupBox, QHeaderView,
-    QLabel, QPushButton, QSizePolicy, QTabWidget,
-    QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget)
+                               QGraphicsView, QGridLayout, QGroupBox, QHeaderView,
+                               QLabel, QPushButton, QSizePolicy, QTabWidget,
+                               QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget)
+
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -57,7 +58,6 @@ class Ui_Form(object):
 
         self.verticalLayout_9.addWidget(self.pb_formatPXRF)
 
-
         self.gridLayout_4.addWidget(self.gb_calibration, 3, 0, 1, 1)
 
         self.verticalLine_divider = QFrame(Form)
@@ -83,12 +83,11 @@ class Ui_Form(object):
         font1.setItalic(False)
         self.label_app_title.setFont(font1)
         self.label_app_title.setStyleSheet(u"font: 700 24pt \"Poppins\";\n"
-"color: rgb(42, 42, 42);")
+                                           "color: rgb(42, 42, 42);")
         self.label_app_title.setScaledContents(True)
         self.label_app_title.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout.addWidget(self.label_app_title)
-
 
         self.gridLayout_4.addWidget(self.frame_app_title, 0, 0, 1, 3)
 
@@ -116,7 +115,6 @@ class Ui_Form(object):
 
         self.gridLayout_2.addWidget(self.pb_newProject, 0, 0, 1, 1)
 
-
         self.gridLayout_4.addWidget(self.gb_project, 6, 0, 1, 1)
 
         self.gb_resultCalcicite = QGroupBox(Form)
@@ -134,7 +132,6 @@ class Ui_Form(object):
         self.pb_extractResult.setFlat(False)
 
         self.verticalLayout_15.addWidget(self.pb_extractResult)
-
 
         self.gridLayout_4.addWidget(self.gb_resultCalcicite, 7, 0, 1, 1)
 
@@ -205,7 +202,6 @@ class Ui_Form(object):
 
         self.gridLayout_3.addWidget(self.tw_tabs, 0, 0, 1, 1)
 
-
         self.gridLayout_4.addWidget(self.frame_2, 5, 2, 3, 1)
 
         self.gb_importFile = QGroupBox(Form)
@@ -239,7 +235,6 @@ class Ui_Form(object):
 
         self.verticalLayout_6.addWidget(self.tb_browserFile)
 
-
         self.gridLayout_4.addWidget(self.gb_importFile, 1, 0, 1, 1)
 
         self.gb_validation = QGroupBox(Form)
@@ -270,7 +265,6 @@ class Ui_Form(object):
 
         self.verticalLayout_23.addWidget(self.cb_unknowAnalysis)
 
-
         self.gridLayout_4.addWidget(self.gb_validation, 2, 0, 1, 1)
 
         self.gb_traitment = QGroupBox(Form)
@@ -300,14 +294,13 @@ class Ui_Form(object):
         self.pb_start.setFont(font3)
         self.pb_start.setCursor(QCursor(Qt.PointingHandCursor))
         self.pb_start.setStyleSheet(u"color: rgb(44, 202, 57);\n"
-"background-color: rgb(85, 255, 127);")
+                                    "background-color: rgb(85, 255, 127);")
         icon5 = QIcon()
         icon5.addFile(u"img/start.ico", QSize(), QIcon.Normal, QIcon.Off)
         self.pb_start.setIcon(icon5)
         self.pb_start.setFlat(True)
 
         self.verticalLayout_8.addWidget(self.pb_start)
-
 
         self.gridLayout_4.addWidget(self.gb_traitment, 4, 0, 2, 1)
 
@@ -326,23 +319,21 @@ class Ui_Form(object):
 
         self.gridLayout.addWidget(self.gv_chart, 0, 0, 1, 1)
 
-
         self.gridLayout_4.addWidget(self.frame, 1, 2, 4, 1)
-
 
         self.retranslateUi(Form)
 
         self.tw_tabs.setCurrentIndex(0)
         self.pb_start.setDefault(True)
 
-
         QMetaObject.connectSlotsByName(Form)
+
     # setupUi
 
     def retranslateUi(self, Form):
-        Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
+        Form.setWindowTitle(QCoreApplication.translate("Form", u"FLUROSCENCE X PORTATIVE - AN CALCULATOR", None))
         self.gb_calibration.setTitle(QCoreApplication.translate("Form", u"Calibration", None))
-        self.pb_formatProbe.setText(QCoreApplication.translate("Form", u"Format -microsonde", None))
+        self.pb_formatProbe.setText(QCoreApplication.translate("Form", u"Format - microsonde", None))
         self.pb_formatPXRF.setText(QCoreApplication.translate("Form", u"Format - pXRF", None))
         self.label_app_title.setText(QCoreApplication.translate("Form", u"FLUROSCENCE X PORTATIVE - AN CALCULATOR", None))
         self.gb_project.setTitle(QCoreApplication.translate("Form", u"Projets", None))
@@ -372,4 +363,3 @@ class Ui_Form(object):
         self.pb_calibrer.setText(QCoreApplication.translate("Form", u"Facteur de correction", None))
         self.pb_start.setText(QCoreApplication.translate("Form", u"LANCER LE TRAITEMENT", None))
     # retranslateUi
-
