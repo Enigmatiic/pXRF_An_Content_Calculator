@@ -30,6 +30,17 @@ TEXT_AN_CONTENT_RATIO_AL = 'An Content Ca|Al'
 TEXT_CALIBRATION_AN_CONTENT = 'An Content'
 
 #
+# Error message
+#
+IMPORTED_ERROR_MSG_BOX_TITLE = 'Erreur import'
+FILE_SELECT_ERROR_MSG_BOX_TITLE = 'Erreur import fichier'
+ALREADY_PROBE_FORMAT_ERROR_MSG_BOX_TITLE = 'Erreur formatage de données'
+#
+ERROR_MESSAGE_FILE_IMPORTED = 'Ce type de donnee a déja ete importé'
+ERROR_MESSAGE_NOT_SELECT_TYPE_FILE_OR_CHOOSE_IMPORTED_FILE = 'Veuillez selectionner le type de donnee a importer puis importer le fichier correspondant'
+ERROR_MESSAGE_ALREADY_PROBE_FORMAT = 'Les données de reférence de microsonde ont déja été formater'
+
+#
 # Element And Total Limit for Sample Verification
 #
 TOTAL_LIMIT = 98.5
@@ -219,6 +230,12 @@ ELEMENTS = {
     'yb2o3': 'yb',
     'zno': 'zn',
     'zr2o5': 'zr'
+}
+
+TYPE_FILE_IMPORTED = {
+    'Microsonde - Données de reférence': 1,
+    'Analyses pXRF - Données de calibration': 2,
+    'Analyses pXRF - Données inconnues': 3
 }
 
 
