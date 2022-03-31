@@ -34,12 +34,16 @@ TEXT_CALIBRATION_AN_CONTENT = 'An Content'
 #
 IMPORTED_ERROR_MSG_BOX_TITLE = 'Erreur import'
 FILE_SELECT_ERROR_MSG_BOX_TITLE = 'Erreur import fichier'
-ALREADY_PROBE_FORMAT_ERROR_MSG_BOX_TITLE = 'Erreur formatage de données'
+ALREADY_FORMAT_ERROR_MSG_BOX_TITLE = 'Erreur formatage de données'
+FILE_ALREADY_IMPORTED_ERROR_MSG_BOX_TITLE = 'Erreur Fichier déjà importé'
+PROBE_OR_PXRF_NOT_FORMAT_ERROR_MSG_BOX_TITLE = 'Erreur facteur de correction'
 #
-ERROR_MESSAGE_FILE_IMPORTED = 'Ce type de donnee a déja ete importé'
-ERROR_MESSAGE_NOT_SELECT_TYPE_FILE_OR_CHOOSE_IMPORTED_FILE = 'Veuillez selectionner le type de donnee a importer puis importer le fichier correspondant'
-ERROR_MESSAGE_ALREADY_PROBE_FORMAT = 'Les données de reférence de microsonde ont déja été formater'
-
+ERROR_MESSAGE_FILE_IMPORTED = 'Ce type de donnee a déja ete importé.'
+ERROR_MESSAGE_NOT_SELECT_TYPE_FILE_OR_CHOOSE_IMPORTED_FILE = 'Veuillez selectionner le type de donnee a importer puis importer le fichier correspondant.'
+ERROR_MESSAGE_ALREADY_PROBE_FORMAT = 'Les données de reférence de microsonde ont déja été formatées.'
+ERROR_MESSAGE_ALREADY_PXRF_FORMAT = 'Les données de calibration analysé au pXRF ont déja été formatées.'
+ERROR_MESSAGE_FILE_ALREADY_IMPORTED = 'Le fichier choisi a déjà été importé précédement.'
+ERROR_MESSAGE_PROBE_OR_PXRF_NOT_FORMAT = 'Vous devez tout d\'abord inclure le fichier des données de calcicité inconnue analysées au pXRF.\nPar la suite, vous devez formater les données de reférence (microsonde) ainsi que les données de calibration (pXRF) avant de pouvoir calculer le facteur de correction.'
 #
 # Element And Total Limit for Sample Verification
 #
