@@ -19,14 +19,7 @@ from modules.pxrfAnCalculator import PxrfAnCalculator
 # UNKNOWN_DATA_ELEMENTS = extract_elements(UNKNOWN_DATA)
 
 
-# CALIBRATION PXRF DATA
-# workbook, file = mf.open_xlsx_file_('data/calibration_pxrf.xlsx')
-# HEAD_CALIBRATION_PXRF_DATA_VALUE, CALIBRATION_PXRF_DATA = mf.compile_xlsx_calibration_to_dict(workbook, file)
-# print('en-tete: ', HEAD_CALIBRATION_PXRF_DATA_VALUE)
-# print('donnee brute: ', CALIBRATION_PXRF_DATA)
-# cb.calcul_correction_factor_for_each_sample(calibration_chemical_element, CALIBRATION_PXRF_DATA)
-# print('---------------------------------')
-# cb.correction_factor(CORRECTION_FACTOR_BY_SAMPLE)
+
 
 # corrected_data = PxrfCalcul.correct_data(UNKNOWN_DATA_ELEMENTS)
 
