@@ -107,7 +107,7 @@ class ManageFile:
                 else:
                     continue
 
-        return data_head, datas
+        return data_head, datas, frequency_sample
 
     def create_xlsx_file(self):
         pass
