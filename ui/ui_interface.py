@@ -278,12 +278,12 @@ class Ui_Form(object):
         self.tab_calibration_probe.setObjectName(u"tab_calibration_probe")
         self.gridLayout_6 = QGridLayout(self.tab_calibration_probe)
         self.gridLayout_6.setObjectName(u"gridLayout_6")
-        self.table_calibration_probe = QTableWidget(self.tab_calibration_probe)
-        self.table_calibration_probe.setObjectName(u"table_calibration_probe")
-        self.table_calibration_probe.setEditTriggers(QAbstractItemView.NoEditTriggers)
-        self.table_calibration_probe.setDragDropOverwriteMode(False)
+        self.table_reference_probe = QTableWidget(self.tab_calibration_probe)
+        self.table_reference_probe.setObjectName(u"table_reference_probe")
+        self.table_reference_probe.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.table_reference_probe.setDragDropOverwriteMode(False)
 
-        self.gridLayout_6.addWidget(self.table_calibration_probe, 0, 0, 1, 1)
+        self.gridLayout_6.addWidget(self.table_reference_probe, 0, 0, 1, 1)
 
         self.tw_tabs.addTab(self.tab_calibration_probe, "")
         self.tab_calibration_pxrf = QWidget()
