@@ -16,14 +16,6 @@ class Calibration:
         """
         pass
 
-    def format_data(self, data):
-        """
-        ...
-        :param data:
-        :return:
-        """
-        pass
-
     @staticmethod
     def convert_oxid_to_element(calibration_data):
         """
@@ -88,9 +80,13 @@ class Calibration:
         utils.correction_factor_params(utils.TEXT_STD_DEVIATION)
         # Relative Standard Deviation of correction factor
         utils.relative_std_deviation()
+        # Fill data for return
+        data_correction_fact = utils.CORRECTION_FACTOR_BY_SAMPLE
+        return data_correction_fact
 
     @staticmethod
     def correction_factor(dataset):
+        correction_factor = {}
         si_factor, al_factor, ca_factor = [], [], []
         for sample in dataset:
             si_factor.append(dataset[sample][utils.TEXT_AVERAGE][utils.TEXT_ELEMENT_SI])
@@ -100,3 +96,6 @@ class Calibration:
         utils.CORRECTION_FACTOR[utils.TEXT_ELEMENT_SI] = mean(si_factor)
         utils.CORRECTION_FACTOR[utils.TEXT_ELEMENT_AL] = mean(al_factor)
         utils.CORRECTION_FACTOR[utils.TEXT_ELEMENT_CA] = mean(ca_factor)
+        correction_factor = utils.CORRECTION_FACTOR
+
+        return correction_factor

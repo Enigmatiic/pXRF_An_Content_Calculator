@@ -13,8 +13,12 @@ class PxrfAnCalculator(Ui_Form, QtWidgets.QWidget, ManageFile, Calibration, Pxrf
     probe_calibration_file, pxrf_calibration_file, unknown_file = None, None, None
     probe_calibration_file_imported, pxrf_calibration_file_imported, unknown_file_imported = False, False, False
     format_probe_reference, format_pxrf_calibration, factor_correction = False, False, False
+    do_correction_factor = False
     calibration_chemical_element, non_convertible_oxid = {}, {}
-    calibration_pxrf_data = {}
+    calibration_pxrf_data, sample_calibration_frequencies = {}, {}
+    correction_factor_for_each_sample, correction_factor = {}, {}
+    analysed_unknown_pxrf_data, analysed_unknown_pxrf_data_element = {}, {}
+    corrected_data = {}
 
     def __init__(self):
         super(PxrfAnCalculator, self).__init__()
@@ -99,6 +103,7 @@ class PxrfAnCalculator(Ui_Form, QtWidgets.QWidget, ManageFile, Calibration, Pxrf
             workbook, file = self.open_xlsx_file_(self.probe_calibration_file)
             HEAD_PROBE_REFERENCE_DATA_VALUE, PROBE_REFERENCE_DATA = self.compile_xlsx_to_dict(workbook, file)
             self.calibration_chemical_element, self.non_convertible_oxid = self.convert_oxid_to_element(PROBE_REFERENCE_DATA)
+            # Tables configurations
             self.table_calibration_probe.verticalHeader().setDefaultSectionSize(50)
             self.table_calibration_probe.horizontalHeader().setDefaultSectionSize(100)
             self.table_calibration_probe.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Fixed)
@@ -151,8 +156,9 @@ class PxrfAnCalculator(Ui_Form, QtWidgets.QWidget, ManageFile, Calibration, Pxrf
         if not self.format_pxrf_calibration and len(self.calibration_pxrf_data) == 0:
             self.format_pxrf_calibration = True
             workbook, file = self.open_xlsx_file_(self.pxrf_calibration_file)
-            HEAD_CALIBRATION_PXRF_DATA_VALUE, CALIBRATION_PXRF_DATA, sample_frequencies = self.compile_xlsx_calibration_to_dict(workbook, file)
+            HEAD_CALIBRATION_PXRF_DATA_VALUE, CALIBRATION_PXRF_DATA, self.sample_calibration_frequencies = self.compile_xlsx_calibration_to_dict(workbook, file)
             self.calibration_pxrf_data = CALIBRATION_PXRF_DATA
+            # Tables configurations
             self.table_calibration_pxrf.verticalHeader().setDefaultSectionSize(50)
             self.table_calibration_pxrf.horizontalHeader().setDefaultSectionSize(100)
             self.table_calibration_pxrf.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Fixed)
@@ -169,8 +175,8 @@ class PxrfAnCalculator(Ui_Form, QtWidgets.QWidget, ManageFile, Calibration, Pxrf
                 self.table_calibration_pxrf.setHorizontalHeaderItem(column_count, item)
 
             # Fill Vertical Header
-            for sample in sample_frequencies:
-                for sample_id in range(1, sample_frequencies[sample] + 1):
+            for sample in self.sample_calibration_frequencies:
+                for sample_id in range(1, self.sample_calibration_frequencies[sample] + 1):
                     row_count = self.table_calibration_pxrf.rowCount()
                     item = QtWidgets.QTableWidgetItem(str(sample))
                     self.table_calibration_pxrf.insertRow(row_count)
@@ -191,7 +197,6 @@ class PxrfAnCalculator(Ui_Form, QtWidgets.QWidget, ManageFile, Calibration, Pxrf
                         col = (int(fabs((column_count - (self.table_calibration_pxrf.columnCount())))))
                         self.table_calibration_pxrf.setItem(row, col, item)
                         column_count -= 1
-                    print()
                     row_count -= 1
                 row_count -= 1
 
@@ -201,17 +206,111 @@ class PxrfAnCalculator(Ui_Form, QtWidgets.QWidget, ManageFile, Calibration, Pxrf
 
     def correction_factor_calculate(self):
         if self.format_pxrf_calibration and self.format_probe_reference and len(self.calibration_chemical_element) != 0 and len(self.calibration_pxrf_data) != 0:
-            pass
+            if not self.do_correction_factor:
+                self.do_correction_factor = True
+                self.correction_factor_for_each_sample = self.calcul_correction_factor_for_each_sample(self.calibration_chemical_element, self.calibration_pxrf_data)
+                self.correction_factor = Calibration.correction_factor(self.correction_factor_for_each_sample)
+                # UNKNOWN DATA
+                workbook, file = self.open_xlsx_file_(self.unknown_file)
+                HEAD_DATAS_VALUE, self.analysed_unknown_pxrf_data_element = self.compile_xlsx_to_dict(workbook, file)
+                unknown_data = self.format_data(self.analysed_unknown_pxrf_data_element)
+                self.analysed_unknown_pxrf_data = extract_elements(unknown_data)
+                # Correct pxrf unknown data
+                self.corrected_data = self.correct_data(self.analysed_unknown_pxrf_data)
+                # Tables configurations
+                self.table_correction_factor.verticalHeader().setDefaultSectionSize(50)
+                self.table_correction_factor.horizontalHeader().setDefaultSectionSize(160)
+                self.table_correction_factor.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Fixed)
+                self.table_pxrf_analysis.verticalHeader().setDefaultSectionSize(50)
+                self.table_pxrf_analysis.horizontalHeader().setDefaultSectionSize(160)
+                self.table_pxrf_analysis.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Fixed)
+
+                # Fill Horizontal Header
+                # Table correction factor
+                for value in HEAD_CORRECTION_DATA_VALUE:
+                    column_count = self.table_correction_factor.columnCount()
+                    item = QtWidgets.QTableWidgetItem(str(value).capitalize())
+                    self.table_correction_factor.insertColumn(column_count)
+                    self.table_correction_factor.setHorizontalHeaderItem(column_count, item)
+                # Table pXRF analysis corrected
+                for value in HEAD_CORRECTION_DATA_VALUE:
+                    column_count = self.table_pxrf_analysis.columnCount()
+                    item = QtWidgets.QTableWidgetItem(str(value).capitalize())
+                    self.table_pxrf_analysis.insertColumn(column_count)
+                    self.table_pxrf_analysis.setHorizontalHeaderItem(column_count, item)
+
+                # Fill Vertical Header
+                # Table correction factor
+                row_count = self.table_correction_factor.rowCount()
+                item = QtWidgets.QTableWidgetItem(str(CORRECTION_FACTOR_TOTAL))
+                self.table_correction_factor.insertRow(row_count)
+                self.table_correction_factor.setVerticalHeaderItem(row_count, item)
+                for sample in self.sample_calibration_frequencies:
+                    for sample_id in range(1, self.sample_calibration_frequencies[sample] + 1):
+                        row_count = self.table_correction_factor.rowCount()
+                        item = QtWidgets.QTableWidgetItem(str(sample))
+                        self.table_correction_factor.insertRow(row_count)
+                        self.table_correction_factor.setVerticalHeaderItem(row_count, item)
+                    for value in VERTICAL_ADDTIONNAL_HEAD_CORRECTION_DATA_VALUE:
+                        row_count = self.table_correction_factor.rowCount()
+                        item = QtWidgets.QTableWidgetItem(str(value))
+                        self.table_correction_factor.insertRow(row_count)
+                        self.table_correction_factor.setVerticalHeaderItem(row_count, item)
+                # Table pXRF analysis corrected
+                for sample in self.analysed_unknown_pxrf_data_element:
+                    row_count = self.table_pxrf_analysis.rowCount()
+                    item = QtWidgets.QTableWidgetItem(str(sample))
+                    self.table_pxrf_analysis.insertRow(row_count)
+                    self.table_pxrf_analysis.setVerticalHeaderItem(row_count, item)
+
+                # Fill tables
+                # Table correction factor
+                # First line on table correction factor
+                column_count = self.table_correction_factor.columnCount()
+                for element in self.correction_factor:
+                    row = 0
+                    item = QtWidgets.QTableWidgetItem(str('{:10.3f}'.format(self.correction_factor[element])))
+                    col = (int(fabs((column_count - (self.table_correction_factor.columnCount())))))
+                    self.table_correction_factor.setItem(row, col, item)
+                    column_count -= 1
+                # other line on table correction factor
+                pass_first_line = False
+                row_count = self.table_correction_factor.rowCount() - 1
+                for sample in self.correction_factor_for_each_sample:
+                    if pass_first_line:
+                        row_count += 1
+                    for sample_id in self.correction_factor_for_each_sample[sample]:
+                        pass_first_line = True
+                        row = (int(fabs((row_count - self.table_correction_factor.rowCount()))) + 1) - 1
+                        column_count = self.table_correction_factor.columnCount()
+                        for element in self.correction_factor_for_each_sample[sample][sample_id]:
+                            item = QtWidgets.QTableWidgetItem(str('{:10.3f}'.format(self.correction_factor_for_each_sample[sample][sample_id][element])))
+                            col = (int(fabs((column_count - (self.table_correction_factor.columnCount())))))
+                            self.table_correction_factor.setItem(row, col, item)
+                            column_count -= 1
+                        row_count -= 1
+                    row_count -= 1
+
+                # Table pXRF analysis corrected
+                row_count = self.table_pxrf_analysis.rowCount()
+                for sample in self.corrected_data:
+                    row = (int(fabs((row_count - self.table_pxrf_analysis.rowCount()))) + 1) - 1
+                    column_count = self.table_pxrf_analysis.columnCount()
+                    for element in self.corrected_data[sample]:
+                        item = QtWidgets.QTableWidgetItem(str('{:10.3f}'.format(self.corrected_data[sample][element])))
+                        col = (int(fabs((column_count - (self.table_pxrf_analysis.columnCount())))))
+                        self.table_pxrf_analysis.setItem(row, col, item)
+                        column_count -= 1
+                    row_count -= 1
+
+                # Active start button
+                self.pb_start.setEnabled(True)
+                self.pb_calibrer.setStyleSheet(u'color: rgb(107, 203, 119);')
         else:
             QtWidgets.QMessageBox.warning(self, PROBE_OR_PXRF_NOT_FORMAT_ERROR_MSG_BOX_TITLE, ERROR_MESSAGE_PROBE_OR_PXRF_NOT_FORMAT)
-        # cb.calcul_correction_factor_for_each_sample(calibration_chemical_element, CALIBRATION_PXRF_DATA)
-        # print('---------------------------------')
-        # cb.correction_factor(CORRECTION_FACTOR_BY_SAMPLE)
-        print('Calcul correction factor')
-        pass
 
     @staticmethod
-    def start(self):
+    def start():
         print('Start traitement')
         pass
 

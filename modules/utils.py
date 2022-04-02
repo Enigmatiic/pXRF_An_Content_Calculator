@@ -44,12 +44,19 @@ ERROR_MESSAGE_ALREADY_PROBE_FORMAT = 'Les données de reférence de microsonde o
 ERROR_MESSAGE_ALREADY_PXRF_FORMAT = 'Les données de calibration analysé au pXRF ont déja été formatées.'
 ERROR_MESSAGE_FILE_ALREADY_IMPORTED = 'Le fichier choisi a déjà été importé précédement.'
 ERROR_MESSAGE_PROBE_OR_PXRF_NOT_FORMAT = 'Vous devez tout d\'abord inclure le fichier des données de calcicité inconnue analysées au pXRF.\nPar la suite, vous devez formater les données de reférence (microsonde) ainsi que les données de calibration (pXRF) avant de pouvoir calculer le facteur de correction.'
+
+#
+# HEAD_CORRECTION_DATA_VALUE
+#
+CORRECTION_FACTOR_TOTAL = 'FACTEUR DE CORRECTION'
+HEAD_CORRECTION_DATA_VALUE = ['Si', 'Al', 'Ca']
+VERTICAL_ADDTIONNAL_HEAD_CORRECTION_DATA_VALUE = ['Moyenne', 'Écart-type', 'Écart-type Relatif']
 #
 # Element And Total Limit for Sample Verification
 #
-TOTAL_LIMIT = 98.5
-ELEMENT_P_LIMIT = 0.5
-ELEMENT_K_LIMIT = 2
+TOTAL_LIMIT = 98.0
+ELEMENT_P_LIMIT = 1.0
+ELEMENT_K_LIMIT = 2.0
 
 #
 # Formulas Coef for An Content Calcul From Ratio
@@ -261,8 +268,8 @@ def remove_sample(sample_key, data):
 
 def extract_elements(data):
     """
-    Extract Si, Ca, Al value for each sample and create a dictionnary
-    :param data: dictionnary of all dataset
+    Extract Si, Ca, Al value for each sample and create a dictionary
+    :param data: dictionary of all dataset
     """
     extracted_elements = {}
     for sample in data:

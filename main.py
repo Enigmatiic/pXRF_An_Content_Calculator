@@ -12,16 +12,6 @@ from modules.pxrfAnCalculator import PxrfAnCalculator
 # cb = Calibration()
 # pxrf = PxrfCalcul()
 
-# UNKNOWN DATA
-# workbook, file = mf.open_xlsx_file_('data/data.xlsx')
-# HEAD_DATAS_VALUE, UNKNOWN_DATA = mf.compile_xlsx_to_dict(workbook, file)
-# UNKNOWN_DATA = pxrf.format_data(UNKNOWN_DATA)
-# UNKNOWN_DATA_ELEMENTS = extract_elements(UNKNOWN_DATA)
-
-
-
-
-# corrected_data = PxrfCalcul.correct_data(UNKNOWN_DATA_ELEMENTS)
 
 # ratios = pxrf.calcul_ratios(corrected_data)
 # an_content = pxrf.calcul_an_content(ratios)
