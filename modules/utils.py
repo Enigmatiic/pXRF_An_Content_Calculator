@@ -37,6 +37,7 @@ FILE_SELECT_ERROR_MSG_BOX_TITLE = 'Erreur import fichier'
 ALREADY_FORMAT_ERROR_MSG_BOX_TITLE = 'Erreur formatage de données'
 FILE_ALREADY_IMPORTED_ERROR_MSG_BOX_TITLE = 'Erreur Fichier déjà importé'
 PROBE_OR_PXRF_NOT_FORMAT_ERROR_MSG_BOX_TITLE = 'Erreur facteur de correction'
+LUNCH_START_VERIFY_ERROR_MSG_BOX_TITLE = 'Erreur rencontée lors du lancement'
 #
 ERROR_MESSAGE_FILE_IMPORTED = 'Ce type de donnee a déja ete importé.'
 ERROR_MESSAGE_NOT_SELECT_TYPE_FILE_OR_CHOOSE_IMPORTED_FILE = 'Veuillez selectionner le type de donnee a importer puis importer le fichier correspondant.'
@@ -44,13 +45,14 @@ ERROR_MESSAGE_ALREADY_PROBE_FORMAT = 'Les données de reférence de microsonde o
 ERROR_MESSAGE_ALREADY_PXRF_FORMAT = 'Les données de calibration analysé au pXRF ont déja été formatées.'
 ERROR_MESSAGE_FILE_ALREADY_IMPORTED = 'Le fichier choisi a déjà été importé précédement.'
 ERROR_MESSAGE_PROBE_OR_PXRF_NOT_FORMAT = 'Vous devez tout d\'abord inclure le fichier des données de calcicité inconnue analysées au pXRF.\nPar la suite, vous devez formater les données de reférence (microsonde) ainsi que les données de calibration (pXRF) avant de pouvoir calculer le facteur de correction.'
-
+ERROR_MESSAGE_LUNCH_START_VERIFY = 'Verifiez que toute la procédure a été respectée avant de lancer le l\'analyse'
 #
-# HEAD_CORRECTION_DATA_VALUE
+# HEADER
 #
 CORRECTION_FACTOR_TOTAL = 'FACTEUR DE CORRECTION'
 HEAD_CORRECTION_DATA_VALUE = ['Si', 'Al', 'Ca']
 VERTICAL_ADDTIONNAL_HEAD_CORRECTION_DATA_VALUE = ['Moyenne', 'Écart-type', 'Écart-type Relatif']
+HEAD_ANALYSIS_RESULT = ['Ca|Si', 'An Content Ca|Si', 'Ca|Al', 'An Content Ca|Al']
 #
 # Element And Total Limit for Sample Verification
 #

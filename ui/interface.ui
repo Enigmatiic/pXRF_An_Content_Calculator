@@ -6,19 +6,19 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1061</width>
+    <width>1203</width>
     <height>793</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>1061</width>
+    <width>1203</width>
     <height>793</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>1061</width>
+    <width>1203</width>
     <height>793</height>
    </size>
   </property>
@@ -26,40 +26,6 @@
    <string>pXRF An Calculator</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_11">
-   <item row="0" column="0" rowspan="2">
-    <widget class="QFrame" name="frame_3">
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
-     </property>
-     <layout class="QGridLayout" name="gridLayout_4">
-      <item row="0" column="0">
-       <widget class="QLabel" name="l_img_logo">
-        <property name="layoutDirection">
-         <enum>Qt::LeftToRight</enum>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="pixmap">
-         <pixmap>img/logo_1.png</pixmap>
-        </property>
-        <property name="scaledContents">
-         <bool>false</bool>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-        <property name="wordWrap">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
    <item row="0" column="2">
     <widget class="QFrame" name="frame_app_title">
      <property name="styleSheet">
@@ -87,48 +53,13 @@
 color: rgb(42, 42, 42);</string>
         </property>
         <property name="text">
-         <string>CALCICITÉ PLAGIOCLASE</string>
+         <string>An Content Calculator by Portable X-Ray</string>
         </property>
         <property name="scaledContents">
          <bool>true</bool>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="1" column="1" rowspan="7">
-    <widget class="Line" name="verticalLine_divider">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="2" rowspan="4">
-    <widget class="QFrame" name="frame_charts">
-     <property name="styleSheet">
-      <string notr="true">background-color: rgba(217, 217, 217, .4);</string>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
-     </property>
-     <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="0">
-       <widget class="QGraphicsView" name="gv_chart">
-        <property name="cursor" stdset="0">
-         <cursorShape>CrossCursor</cursorShape>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background-color: rgb(255, 255, 255);</string>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::NoFrame</enum>
         </property>
        </widget>
       </item>
@@ -212,6 +143,56 @@ color: rgb(42, 42, 42);</string>
      </layout>
     </widget>
    </item>
+   <item row="6" column="0">
+    <widget class="QGroupBox" name="gb_project">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="font">
+      <font>
+       <family>Poppins</family>
+       <pointsize>10</pointsize>
+       <stylestrategy>PreferAntialias</stylestrategy>
+       <kerning>false</kerning>
+      </font>
+     </property>
+     <property name="title">
+      <string>Projets</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="2" column="0">
+       <widget class="QPushButton" name="pb_openProject">
+        <property name="cursor">
+         <cursorShape>ForbiddenCursor</cursorShape>
+        </property>
+        <property name="text">
+         <string>Ouvrir un projet</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QPushButton" name="pb_saveProject">
+        <property name="cursor">
+         <cursorShape>ForbiddenCursor</cursorShape>
+        </property>
+        <property name="text">
+         <string>Enregistrer</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QPushButton" name="pb_newProject">
+        <property name="cursor">
+         <cursorShape>ForbiddenCursor</cursorShape>
+        </property>
+        <property name="text">
+         <string>Nouveau projet</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
    <item row="3" column="0">
     <widget class="QGroupBox" name="gb_validation">
      <property name="font">
@@ -280,6 +261,47 @@ color: rgb(42, 42, 42);</string>
      </layout>
     </widget>
    </item>
+   <item row="1" column="1" rowspan="7">
+    <widget class="Line" name="verticalLine_divider">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" rowspan="2">
+    <widget class="QFrame" name="frame_3">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_4">
+      <item row="0" column="0">
+       <widget class="QLabel" name="l_img_logo">
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>img/logo_1.png</pixmap>
+        </property>
+        <property name="scaledContents">
+         <bool>false</bool>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="wordWrap">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
    <item row="4" column="0">
     <widget class="QGroupBox" name="gb_calibration">
      <property name="font">
@@ -331,6 +353,43 @@ color: rgb(42, 42, 42);</string>
      </layout>
     </widget>
    </item>
+   <item row="7" column="0">
+    <widget class="QGroupBox" name="gb_resultCalcicite">
+     <property name="font">
+      <font>
+       <family>Poppins</family>
+       <pointsize>10</pointsize>
+       <stylestrategy>PreferAntialias</stylestrategy>
+       <kerning>false</kerning>
+      </font>
+     </property>
+     <property name="title">
+      <string>Résultat calcicité</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_15">
+      <item>
+       <widget class="QPushButton" name="pb_extractResult">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="text">
+         <string>Extraire - Excel</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>img/save.ico</normaloff>img/save.ico</iconset>
+        </property>
+        <property name="flat">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
    <item row="5" column="0">
     <widget class="QGroupBox" name="gb_traitment">
      <property name="font">
@@ -354,7 +413,7 @@ color: rgb(42, 42, 42);</string>
          <cursorShape>PointingHandCursor</cursorShape>
         </property>
         <property name="text">
-         <string>Facteur de correction</string>
+         <string>Corriger les données</string>
         </property>
         <property name="icon">
          <iconset>
@@ -401,7 +460,7 @@ background-color: rgb(85, 255, 127);</string>
      </layout>
     </widget>
    </item>
-   <item row="5" column="2" rowspan="3">
+   <item row="1" column="2" rowspan="7">
     <widget class="QFrame" name="frame_tabs">
      <property name="styleSheet">
       <string notr="true">background-color: rgba(217, 217, 217, .4);</string>
@@ -425,7 +484,7 @@ background-color: rgb(85, 255, 127);</string>
          <string notr="true">background-color: rgb(255, 255, 255);</string>
         </property>
         <property name="currentIndex">
-         <number>4</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="tab_calibration_probe">
          <attribute name="title">
@@ -433,7 +492,14 @@ background-color: rgb(85, 255, 127);</string>
          </attribute>
          <layout class="QGridLayout" name="gridLayout_6">
           <item row="0" column="0">
-           <widget class="QTableWidget" name="table_calibration_probe"/>
+           <widget class="QTableWidget" name="table_calibration_probe">
+            <property name="editTriggers">
+             <set>QAbstractItemView::NoEditTriggers</set>
+            </property>
+            <property name="dragDropOverwriteMode">
+             <bool>false</bool>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>
@@ -443,7 +509,11 @@ background-color: rgb(85, 255, 127);</string>
          </attribute>
          <layout class="QGridLayout" name="gridLayout_5">
           <item row="0" column="0">
-           <widget class="QTableWidget" name="table_calibration_pxrf"/>
+           <widget class="QTableWidget" name="table_calibration_pxrf">
+            <property name="editTriggers">
+             <set>QAbstractItemView::NoEditTriggers</set>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>
@@ -453,17 +523,25 @@ background-color: rgb(85, 255, 127);</string>
          </attribute>
          <layout class="QGridLayout" name="gridLayout_7">
           <item row="0" column="0">
-           <widget class="QTableWidget" name="table_correction_factor"/>
+           <widget class="QTableWidget" name="table_correction_factor">
+            <property name="editTriggers">
+             <set>QAbstractItemView::NoEditTriggers</set>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>
         <widget class="QWidget" name="tab_pxrf_analysis">
          <attribute name="title">
-          <string>Analyses pXRF</string>
+          <string>Analyses pXRF corrigées</string>
          </attribute>
          <layout class="QGridLayout" name="gridLayout_8">
           <item row="0" column="0">
-           <widget class="QTableWidget" name="table_pxrf_analysis"/>
+           <widget class="QTableWidget" name="table_pxrf_analysis">
+            <property name="editTriggers">
+             <set>QAbstractItemView::NoEditTriggers</set>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>
@@ -473,97 +551,14 @@ background-color: rgb(85, 255, 127);</string>
          </attribute>
          <layout class="QGridLayout" name="gridLayout_9">
           <item row="0" column="0">
-           <widget class="QTableWidget" name="table_results"/>
+           <widget class="QTableWidget" name="table_results">
+            <property name="editTriggers">
+             <set>QAbstractItemView::NoEditTriggers</set>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="6" column="0">
-    <widget class="QGroupBox" name="gb_project">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="font">
-      <font>
-       <family>Poppins</family>
-       <pointsize>10</pointsize>
-       <stylestrategy>PreferAntialias</stylestrategy>
-       <kerning>false</kerning>
-      </font>
-     </property>
-     <property name="title">
-      <string>Projets</string>
-     </property>
-     <layout class="QGridLayout" name="gridLayout_2">
-      <item row="2" column="0">
-       <widget class="QPushButton" name="pb_openProject">
-        <property name="cursor">
-         <cursorShape>ForbiddenCursor</cursorShape>
-        </property>
-        <property name="text">
-         <string>Ouvrir un projet</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0">
-       <widget class="QPushButton" name="pb_saveProject">
-        <property name="cursor">
-         <cursorShape>ForbiddenCursor</cursorShape>
-        </property>
-        <property name="text">
-         <string>Enregistrer</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0">
-       <widget class="QPushButton" name="pb_newProject">
-        <property name="cursor">
-         <cursorShape>ForbiddenCursor</cursorShape>
-        </property>
-        <property name="text">
-         <string>Nouveau projet</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="7" column="0">
-    <widget class="QGroupBox" name="gb_resultCalcicite">
-     <property name="font">
-      <font>
-       <family>Poppins</family>
-       <pointsize>10</pointsize>
-       <stylestrategy>PreferAntialias</stylestrategy>
-       <kerning>false</kerning>
-      </font>
-     </property>
-     <property name="title">
-      <string>Résultat calcicité</string>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout_15">
-      <item>
-       <widget class="QPushButton" name="pb_extractResult">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="cursor">
-         <cursorShape>PointingHandCursor</cursorShape>
-        </property>
-        <property name="text">
-         <string>Extraire - Excel</string>
-        </property>
-        <property name="icon">
-         <iconset>
-          <normaloff>img/save.ico</normaloff>img/save.ico</iconset>
-        </property>
-        <property name="flat">
-         <bool>false</bool>
-        </property>
        </widget>
       </item>
      </layout>

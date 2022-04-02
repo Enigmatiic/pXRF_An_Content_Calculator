@@ -14,11 +14,13 @@ class PxrfAnCalculator(Ui_Form, QtWidgets.QWidget, ManageFile, Calibration, Pxrf
     probe_calibration_file_imported, pxrf_calibration_file_imported, unknown_file_imported = False, False, False
     format_probe_reference, format_pxrf_calibration, factor_correction = False, False, False
     do_correction_factor = False
+    start_analysis = False
     calibration_chemical_element, non_convertible_oxid = {}, {}
     calibration_pxrf_data, sample_calibration_frequencies = {}, {}
     correction_factor_for_each_sample, correction_factor = {}, {}
     analysed_unknown_pxrf_data, analysed_unknown_pxrf_data_element = {}, {}
     corrected_data = {}
+    ratios, an_content = {}, {}
 
     def __init__(self):
         super(PxrfAnCalculator, self).__init__()
@@ -309,10 +311,56 @@ class PxrfAnCalculator(Ui_Form, QtWidgets.QWidget, ManageFile, Calibration, Pxrf
         else:
             QtWidgets.QMessageBox.warning(self, PROBE_OR_PXRF_NOT_FORMAT_ERROR_MSG_BOX_TITLE, ERROR_MESSAGE_PROBE_OR_PXRF_NOT_FORMAT)
 
-    @staticmethod
-    def start():
-        print('Start traitement')
-        pass
+    def start(self):
+        if self.do_correction_factor and not self.start_analysis and len(self.corrected_data) != 0:
+            self.start_analysis = True
+            self.ratios = self.calcul_ratios(self.corrected_data)
+            self.an_content = self.calcul_an_content(self.ratios)
+            # Tables configurations
+            self.table_results.verticalHeader().setDefaultSectionSize(50)
+            self.table_results.horizontalHeader().setDefaultSectionSize(150)
+            self.table_results.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Fixed)
+
+            # Fill Horizontal Header
+            for value in HEAD_ANALYSIS_RESULT:
+                column_count = self.table_results.columnCount()
+                if value in ELEMENTS:
+                    item = QtWidgets.QTableWidgetItem(str(value))
+                else:
+                    item = QtWidgets.QTableWidgetItem(str(value))
+                self.table_results.insertColumn(column_count)
+                self.table_results.setHorizontalHeaderItem(column_count, item)
+
+            # Fill Vertical Header
+            for sample in self.ratios:
+                row_count = self.table_results.rowCount()
+                item = QtWidgets.QTableWidgetItem(str(sample))
+                self.table_results.insertRow(row_count)
+                self.table_results.setVerticalHeaderItem(row_count, item)
+
+            # Fill table
+            row_count = self.table_results.rowCount()
+            for sample in self.an_content:
+                row = (int(fabs((row_count - self.table_results.rowCount()))) + 1) - 1
+                # Ratio Ca|Si
+                item_ratio_ca_si = QtWidgets.QTableWidgetItem(str('{:10.3f}'.format(self.ratios[sample][TEXT_RATIO_SI])))
+                self.table_results.setItem(row, 0, item_ratio_ca_si)
+                # An Content Ca|Si
+                item_an_content_ca_si = QtWidgets.QTableWidgetItem(str('{:10.3f}'.format(self.an_content[sample][TEXT_AN_CONTENT_RATIO_SI])))
+                self.table_results.setItem(row, 1, item_an_content_ca_si)
+                # Ratio Ca|Al
+                item_ratio_ca_al = QtWidgets.QTableWidgetItem(str('{:10.3f}'.format(self.ratios[sample][TEXT_RATIO_AL])))
+                self.table_results.setItem(row, 2, item_ratio_ca_al)
+                # An Content Ca|Si
+                if self.an_content[sample][TEXT_AN_CONTENT_RATIO_AL] == 0 or self.an_content[sample][TEXT_AN_CONTENT_RATIO_AL] > 99 :
+                    item_an_content_ca_al = QtWidgets.QTableWidgetItem(str('Non calculé: Ratio trop grand'))
+                else:
+                    item_an_content_ca_al = QtWidgets.QTableWidgetItem(str('{:10.3f}'.format(self.an_content[sample][TEXT_AN_CONTENT_RATIO_AL])))
+                self.table_results.setItem(row, 3, item_an_content_ca_al)
+                row_count -= 1
+
+        else:
+            QtWidgets.QMessageBox.warning(self, LUNCH_START_VERIFY_ERROR_MSG_BOX_TITLE, ERROR_MESSAGE_LUNCH_START_VERIFY)
 
     @staticmethod
     def extract_result_xlsx(self):

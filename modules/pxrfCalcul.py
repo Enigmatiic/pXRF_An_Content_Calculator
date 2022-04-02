@@ -98,7 +98,7 @@ class PxrfCalcul:
         for sample in data:
             data_an_content[str(sample)] = {}
             data_an_content[str(sample)][utils.TEXT_AN_CONTENT_RATIO_SI] = self.calcul_an_content_from_si_ratio(data[sample][utils.TEXT_RATIO_SI])
-            #data_an_content[str(sample)][utils.TEXT_AN_CONTENT_RATIO_AL] = self.calcul_an_content_from_al_ratio(data[sample][utils.TEXT_RATIO_AL])
+            data_an_content[str(sample)][utils.TEXT_AN_CONTENT_RATIO_AL] = self.calcul_an_content_from_al_ratio(data[sample][utils.TEXT_RATIO_AL])
 
         return data_an_content
 
@@ -118,7 +118,11 @@ class PxrfCalcul:
         :param al_ratio:
         :return:
         """
-        return (utils.COEF_AL_RATIO_A + math.sqrt(utils.COEF_AL_RATIO_B - utils.COEF_AL_RATIO_C * al_ratio)) / utils.COEF_AL_RATIO_D
+        if utils.COEF_AL_RATIO_B - (utils.COEF_AL_RATIO_C * al_ratio) < 0:
+            return 0
+        else:
+            return (utils.COEF_AL_RATIO_A + math.sqrt(utils.COEF_AL_RATIO_B - utils.COEF_AL_RATIO_C * al_ratio)) / utils.COEF_AL_RATIO_D
+
 
     @staticmethod
     def correct_data(dataset):
