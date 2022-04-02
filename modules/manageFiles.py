@@ -2,7 +2,6 @@
 Module for xls file manager
 """
 from openpyxl import load_workbook, Workbook
-
 from modules import utils
 
 
@@ -109,5 +108,3 @@ class ManageFile:
 
         return data_head, datas, frequency_sample
 
-    def create_xlsx_file(self):
-        pass
