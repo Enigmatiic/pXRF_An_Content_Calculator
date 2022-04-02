@@ -4,8 +4,10 @@ from modules.calibration import Calibration
 from modules.manageFiles import ManageFile
 from modules.pxrfCalcul import PxrfCalcul
 from modules.projectManagment import ProjectManagment
-from functools import partial
 from modules.utils import *
+from openpyxl import load_workbook, Workbook
+from datetime import datetime, timezone
+import os
 from math import fabs
 
 
@@ -16,7 +18,7 @@ class PxrfAnCalculator(Ui_Form, QtWidgets.QWidget, ManageFile, Calibration, Pxrf
     do_correction_factor = False
     start_analysis = False
     calibration_chemical_element, non_convertible_oxid = {}, {}
-    calibration_pxrf_data, sample_calibration_frequencies = {}, {}
+    head_calibration_pxrf_data, calibration_pxrf_data, sample_calibration_frequencies = {}, {}, {}
     correction_factor_for_each_sample, correction_factor = {}, {}
     analysed_unknown_pxrf_data, analysed_unknown_pxrf_data_element = {}, {}
     corrected_data = {}
@@ -106,47 +108,47 @@ class PxrfAnCalculator(Ui_Form, QtWidgets.QWidget, ManageFile, Calibration, Pxrf
             HEAD_PROBE_REFERENCE_DATA_VALUE, PROBE_REFERENCE_DATA = self.compile_xlsx_to_dict(workbook, file)
             self.calibration_chemical_element, self.non_convertible_oxid = self.convert_oxid_to_element(PROBE_REFERENCE_DATA)
             # Tables configurations
-            self.table_calibration_probe.verticalHeader().setDefaultSectionSize(50)
-            self.table_calibration_probe.horizontalHeader().setDefaultSectionSize(100)
-            self.table_calibration_probe.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Fixed)
+            self.table_reference_probe.verticalHeader().setDefaultSectionSize(50)
+            self.table_reference_probe.horizontalHeader().setDefaultSectionSize(100)
+            self.table_reference_probe.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Fixed)
 
             # Fill Horizontal Header
             HEAD_PROBE_REFERENCE_DATA_VALUE.pop(0)
             for value in HEAD_PROBE_REFERENCE_DATA_VALUE:
-                column_count = self.table_calibration_probe.columnCount()
+                column_count = self.table_reference_probe.columnCount()
                 if value in ELEMENTS:
                     item = QtWidgets.QTableWidgetItem(str(ELEMENTS[value].capitalize()))
                 else:
                     item = QtWidgets.QTableWidgetItem(str(value).capitalize())
-                self.table_calibration_probe.insertColumn(column_count)
-                self.table_calibration_probe.setHorizontalHeaderItem(column_count, item)
+                self.table_reference_probe.insertColumn(column_count)
+                self.table_reference_probe.setHorizontalHeaderItem(column_count, item)
 
             # Fill Vertical Header
             for sample in self.calibration_chemical_element:
-                row_count = self.table_calibration_probe.rowCount()
+                row_count = self.table_reference_probe.rowCount()
                 item = QtWidgets.QTableWidgetItem(str(sample))
-                self.table_calibration_probe.insertRow(row_count)
-                self.table_calibration_probe.setVerticalHeaderItem(row_count, item)
+                self.table_reference_probe.insertRow(row_count)
+                self.table_reference_probe.setVerticalHeaderItem(row_count, item)
 
             # Fill Table
-            row_count = self.table_calibration_probe.rowCount()
+            row_count = self.table_reference_probe.rowCount()
             for sample in self.calibration_chemical_element:
-                row = (int(fabs((row_count - self.table_calibration_probe.rowCount()))) + 1) - 1
-                column_count = self.table_calibration_probe.columnCount()
+                row = (int(fabs((row_count - self.table_reference_probe.rowCount()))) + 1) - 1
+                column_count = self.table_reference_probe.columnCount()
                 for element in self.calibration_chemical_element[sample]:
                     item = QtWidgets.QTableWidgetItem(str('{:10.3f}'.format(self.calibration_chemical_element[sample][element])))
-                    col = (int(fabs((column_count - (self.table_calibration_probe.columnCount())))))
-                    self.table_calibration_probe.setItem(row, col, item)
+                    col = (int(fabs((column_count - (self.table_reference_probe.columnCount())))))
+                    self.table_reference_probe.setItem(row, col, item)
                     column_count -= 1
                 row_count -= 1
 
             # Fill Last Column An Content
-            row_count = self.table_calibration_probe.rowCount()
+            row_count = self.table_reference_probe.rowCount()
             for sample in PROBE_REFERENCE_DATA:
-                row = (int(fabs((row_count - self.table_calibration_probe.rowCount()))) + 1) - 1
-                col = self.table_calibration_probe.columnCount() - 1
+                row = (int(fabs((row_count - self.table_reference_probe.rowCount()))) + 1) - 1
+                col = self.table_reference_probe.columnCount() - 1
                 item = QtWidgets.QTableWidgetItem(str('{:10.3f}'.format(PROBE_REFERENCE_DATA[sample][TEXT_CALIBRATION_AN_CONTENT.lower()])))
-                self.table_calibration_probe.setItem(row, col, item)
+                self.table_reference_probe.setItem(row, col, item)
                 row_count -= 1
 
             self.pb_formatProbe.setStyleSheet(u'color: rgb(107, 203, 119);')
@@ -158,16 +160,15 @@ class PxrfAnCalculator(Ui_Form, QtWidgets.QWidget, ManageFile, Calibration, Pxrf
         if not self.format_pxrf_calibration and len(self.calibration_pxrf_data) == 0:
             self.format_pxrf_calibration = True
             workbook, file = self.open_xlsx_file_(self.pxrf_calibration_file)
-            HEAD_CALIBRATION_PXRF_DATA_VALUE, CALIBRATION_PXRF_DATA, self.sample_calibration_frequencies = self.compile_xlsx_calibration_to_dict(workbook, file)
-            self.calibration_pxrf_data = CALIBRATION_PXRF_DATA
+            self.head_calibration_pxrf_data, self.calibration_pxrf_data, self.sample_calibration_frequencies = self.compile_xlsx_calibration_to_dict(workbook, file)
             # Tables configurations
             self.table_calibration_pxrf.verticalHeader().setDefaultSectionSize(50)
             self.table_calibration_pxrf.horizontalHeader().setDefaultSectionSize(100)
             self.table_calibration_pxrf.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Fixed)
 
             # Fill Horizontal Header
-            HEAD_CALIBRATION_PXRF_DATA_VALUE.pop(0)
-            for value in HEAD_CALIBRATION_PXRF_DATA_VALUE:
+            self.head_calibration_pxrf_data.pop(0)
+            for value in self.head_calibration_pxrf_data:
                 column_count = self.table_calibration_pxrf.columnCount()
                 if value in ELEMENTS:
                     item = QtWidgets.QTableWidgetItem(str(value).capitalize())
@@ -352,24 +353,109 @@ class PxrfAnCalculator(Ui_Form, QtWidgets.QWidget, ManageFile, Calibration, Pxrf
                 item_ratio_ca_al = QtWidgets.QTableWidgetItem(str('{:10.3f}'.format(self.ratios[sample][TEXT_RATIO_AL])))
                 self.table_results.setItem(row, 2, item_ratio_ca_al)
                 # An Content Ca|Si
-                if self.an_content[sample][TEXT_AN_CONTENT_RATIO_AL] == 0 or self.an_content[sample][TEXT_AN_CONTENT_RATIO_AL] > 99 :
+                if self.an_content[sample][TEXT_AN_CONTENT_RATIO_AL] == 0 or self.an_content[sample][TEXT_AN_CONTENT_RATIO_AL] > 99:
                     item_an_content_ca_al = QtWidgets.QTableWidgetItem(str('Non calculé: Ratio trop grand'))
                 else:
                     item_an_content_ca_al = QtWidgets.QTableWidgetItem(str('{:10.3f}'.format(self.an_content[sample][TEXT_AN_CONTENT_RATIO_AL])))
                 self.table_results.setItem(row, 3, item_an_content_ca_al)
                 row_count -= 1
 
+            self.pb_extractResult.setEnabled(True)
+
         else:
             QtWidgets.QMessageBox.warning(self, LUNCH_START_VERIFY_ERROR_MSG_BOX_TITLE, ERROR_MESSAGE_LUNCH_START_VERIFY)
 
-    @staticmethod
     def extract_result_xlsx(self):
-        pass
 
-    @staticmethod
-    def draw_chart(self):
-        pass
+        dest_url = QtWidgets.QFileDialog().getExistingDirectory(self, 'Selectionner le dossier', '', QtWidgets.QFileDialog().ShowDirsOnly)
 
-    @staticmethod
-    def draw_table(self, dataset):
-        pass
+        dest_filename = dest_url + '/' + EXPORTED_FILE_NAME + EXPORTED_FILE_NAME_EXTENSION
+
+        # Remove file if exist in the folder
+        if os.path.exists(dest_filename):
+            os.remove(dest_filename)
+
+        wb = Workbook()
+        # Create all sheet file
+        ws_probe_reference_dataset = wb.active
+        ws_probe_reference_dataset.title = PROBE_REFRENCE_DATASET_SHEET_NAME
+        ws_pxrf_calibration_dataset = wb.create_sheet(title=PXRF_CALIBRATION_DATASET_SHEET_NAME)
+        ws_correction_factor_dataset = wb.create_sheet(title=CORRECTION_FACTOR_DATASET_SHEET_NAME)
+        ws_corrected_pxrf_dataset = wb.create_sheet(title=CORRECTED_PXRF_DATASET_SHEET_NAME)
+        ws_result_dataset = wb.create_sheet(title=RESULTS_DATASET_SHEET_NAME)
+
+        # Table row count
+        reference_probe_table_row_count = self.table_reference_probe.rowCount()
+        pxrf_calibration_table_row_count = self.table_calibration_pxrf.rowCount()
+        correction_factor_table_row_count = self.table_correction_factor.rowCount()
+        corrected_pxrf_table_row_count = self.table_pxrf_analysis.rowCount()
+        result_an_content_table_row_count = self.table_results.rowCount()
+        # Table column count
+        reference_probe_table_column_count = self.table_reference_probe.columnCount()
+        pxrf_calibration_table_column_count = self.table_calibration_pxrf.columnCount()
+        correction_factor_table_column_count = self.table_correction_factor.columnCount()
+        corrected_pxrf_table_column_count = self.table_pxrf_analysis.columnCount()
+        result_an_content_table_column_count = self.table_results.columnCount()
+
+        # Fill reference probe sheet file
+        for row in range(0, reference_probe_table_row_count):
+            _ = ws_probe_reference_dataset.cell(column=1, row=(row + 2), value=self.table_reference_probe.verticalHeaderItem(row).text())
+        for col in range(0, reference_probe_table_column_count):
+            _ = ws_probe_reference_dataset.cell(column=(col + 2), row=1, value=self.table_reference_probe.horizontalHeaderItem(col).text())
+        for row in range(0, reference_probe_table_row_count):
+            for col in range(0, reference_probe_table_column_count):
+                value = self.table_reference_probe.item(row, col).text()
+                if value.isdigit():
+                    value = float(value)
+                _ = ws_probe_reference_dataset.cell(column=(col + 2), row=(row + 2), value=value)
+
+        # Fill pXRF Calibration sheet file
+        for row in range(0, pxrf_calibration_table_row_count):
+            _ = ws_pxrf_calibration_dataset.cell(column=1, row=(row + 2), value=self.table_calibration_pxrf.verticalHeaderItem(row).text())
+        for col in range(0, pxrf_calibration_table_column_count):
+            _ = ws_pxrf_calibration_dataset.cell(column=(col + 2), row=1, value=self.table_calibration_pxrf.horizontalHeaderItem(col).text())
+        for row in range(0, pxrf_calibration_table_row_count):
+            for col in range(0, pxrf_calibration_table_column_count):
+                value = self.table_calibration_pxrf.item(row, col).text()
+                if value.isdigit():
+                    value = float(value)
+                _ = ws_pxrf_calibration_dataset.cell(column=(col + 2), row=(row + 2), value=value)
+
+        # Fill Corrector Factor sheet file
+        for row in range(0, correction_factor_table_row_count):
+            _ = ws_correction_factor_dataset.cell(column=1, row=(row + 2), value=self.table_correction_factor.verticalHeaderItem(row).text())
+        for col in range(0, correction_factor_table_column_count):
+            _ = ws_correction_factor_dataset.cell(column=(col + 2), row=1, value=self.table_correction_factor.horizontalHeaderItem(col).text())
+        for row in range(0, correction_factor_table_row_count):
+            for col in range(0, correction_factor_table_column_count):
+                value = self.table_correction_factor.item(row, col).text()
+                if value.isdigit():
+                    value = float(value)
+                _ = ws_correction_factor_dataset.cell(column=(col + 2), row=(row + 2), value=value)
+
+        # Fill Corrected pXRF sheet file
+        for row in range(0, corrected_pxrf_table_row_count):
+            _ = ws_corrected_pxrf_dataset.cell(column=1, row=(row + 2), value=self.table_pxrf_analysis.verticalHeaderItem(row).text())
+        for col in range(0, corrected_pxrf_table_column_count):
+            _ = ws_corrected_pxrf_dataset.cell(column=(col + 2), row=1, value=self.table_pxrf_analysis.horizontalHeaderItem(col).text())
+        for row in range(0, corrected_pxrf_table_row_count):
+            for col in range(0, corrected_pxrf_table_column_count):
+                value = self.table_pxrf_analysis.item(row, col).text()
+                if not value.isdigit():
+                    value = float(value)
+                _ = ws_corrected_pxrf_dataset.cell(column=(col + 2), row=(row + 2), value=value)
+
+        # Fill result An Content sheet file
+        for row in range(0, result_an_content_table_row_count):
+            _ = ws_result_dataset.cell(column=1, row=(row + 2), value=self.table_results.verticalHeaderItem(row).text())
+        for col in range(0, result_an_content_table_column_count):
+            _ = ws_result_dataset.cell(column=(col + 2), row=1, value=self.table_results.horizontalHeaderItem(col).text())
+        for row in range(0, result_an_content_table_row_count):
+            for col in range(0, result_an_content_table_column_count):
+                value = self.table_results.item(row, col).text()
+                if value.isdigit():
+                    value = float(value)
+                _ = ws_result_dataset.cell(column=(col + 2), row=(row + 2), value=value)
+
+        # Save xlsx File
+        wb.save(filename=dest_filename)
