@@ -56,6 +56,21 @@ HEAD_ANALYSIS_RESULT = ['Ca|Si', 'An Content Ca|Si', 'Ca|Al', 'An Content Ca|Al'
 #
 # Element And Total Limit for Sample Verification
 #
+
+#
+# EXPORTED FILE
+#
+EXPORTED_FILE_NAME = 'exported_result'
+EXPORTED_FILE_NAME_EXTENSION = '.xlsx'
+EXPORTED_MKDIR = 'data/results'
+EXPORTED_DEST_FOLDER = 'data/results/'
+EXPORTED_DIR_MOD = 777
+PROBE_REFRENCE_DATASET_SHEET_NAME = 'Probe reference data'
+PXRF_CALIBRATION_DATASET_SHEET_NAME = 'pXRF Calibration data'
+CORRECTION_FACTOR_DATASET_SHEET_NAME = 'Corrector factor data'
+CORRECTED_PXRF_DATASET_SHEET_NAME = 'Corrected pXRF data'
+RESULTS_DATASET_SHEET_NAME = 'Result An Content data'
+
 TOTAL_LIMIT = 98.0
 ELEMENT_P_LIMIT = 1.0
 ELEMENT_K_LIMIT = 2.0
