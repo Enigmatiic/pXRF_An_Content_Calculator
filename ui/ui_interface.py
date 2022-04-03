@@ -19,6 +19,9 @@ from PySide6.QtWidgets import (QAbstractItemView, QApplication, QCheckBox, QComb
     QFrame, QGridLayout, QGroupBox, QHeaderView,
     QLabel, QPushButton, QSizePolicy, QTabWidget,
     QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget)
+import os
+
+basedir = os.path.dirname(__file__)
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -72,7 +75,7 @@ class Ui_Form(object):
         self.select_chooseTypeFile = QComboBox(self.gb_importFile)
         self.select_chooseTypeFile.addItem("")
         icon = QIcon()
-        icon.addFile(u"ui/img/xlsx_.ico", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(os.path.join(basedir, "img", u"xlsx_.ico"), QSize(), QIcon.Normal, QIcon.Off)
         self.select_chooseTypeFile.addItem(icon, "")
         self.select_chooseTypeFile.addItem(icon, "")
         self.select_chooseTypeFile.addItem(icon, "")
@@ -85,7 +88,7 @@ class Ui_Form(object):
         self.pb_browserFile.setObjectName(u"pb_browserFile")
         self.pb_browserFile.setCursor(QCursor(Qt.PointingHandCursor))
         icon1 = QIcon()
-        icon1.addFile(u"ui/img/import.ico", QSize(), QIcon.Normal, QIcon.Off)
+        icon1.addFile(os.path.join(basedir, "img", u"import.ico"), QSize(), QIcon.Normal, QIcon.Off)
         self.pb_browserFile.setIcon(icon1)
 
         self.verticalLayout_6.addWidget(self.pb_browserFile)
@@ -167,7 +170,7 @@ class Ui_Form(object):
         self.l_img_logo = QLabel(self.frame_3)
         self.l_img_logo.setObjectName(u"l_img_logo")
         self.l_img_logo.setLayoutDirection(Qt.LeftToRight)
-        self.l_img_logo.setPixmap(QPixmap(u"ui/img/logo_1.png"))
+        self.l_img_logo.setPixmap(QPixmap(os.path.join(basedir, "img", u"logo_1.png")))
         self.l_img_logo.setScaledContents(False)
         self.l_img_logo.setAlignment(Qt.AlignCenter)
         self.l_img_logo.setWordWrap(True)
@@ -187,7 +190,7 @@ class Ui_Form(object):
         self.pb_formatProbe.setEnabled(False)
         self.pb_formatProbe.setCursor(QCursor(Qt.PointingHandCursor))
         icon2 = QIcon()
-        icon2.addFile(u"ui/img/format.ico", QSize(), QIcon.Normal, QIcon.Off)
+        icon2.addFile(os.path.join(basedir, "img", u"format.ico"), QSize(), QIcon.Normal, QIcon.Off)
         self.pb_formatProbe.setIcon(icon2)
 
         self.verticalLayout_9.addWidget(self.pb_formatProbe)
@@ -213,7 +216,7 @@ class Ui_Form(object):
         self.pb_extractResult.setEnabled(False)
         self.pb_extractResult.setCursor(QCursor(Qt.PointingHandCursor))
         icon3 = QIcon()
-        icon3.addFile(u"ui/img/save.ico", QSize(), QIcon.Normal, QIcon.Off)
+        icon3.addFile(os.path.join(basedir, "img", u"save.ico"), QSize(), QIcon.Normal, QIcon.Off)
         self.pb_extractResult.setIcon(icon3)
         self.pb_extractResult.setFlat(False)
 
@@ -232,7 +235,7 @@ class Ui_Form(object):
         self.pb_calibrer.setEnabled(False)
         self.pb_calibrer.setCursor(QCursor(Qt.PointingHandCursor))
         icon4 = QIcon()
-        icon4.addFile(u"ui/img/gears.ico", QSize(), QIcon.Normal, QIcon.Off)
+        icon4.addFile(os.path.join(basedir, "img", u"gears.ico"), QSize(), QIcon.Normal, QIcon.Off)
         self.pb_calibrer.setIcon(icon4)
 
         self.verticalLayout_8.addWidget(self.pb_calibrer)
@@ -251,7 +254,7 @@ class Ui_Form(object):
         self.pb_start.setStyleSheet(u"color: rgb(44, 202, 57);\n"
 "background-color: rgb(85, 255, 127);")
         icon5 = QIcon()
-        icon5.addFile(u"ui/img/start.ico", QSize(), QIcon.Normal, QIcon.Off)
+        icon5.addFile(os.path.join(basedir, "img", u"start.ico"), QSize(), QIcon.Normal, QIcon.Off)
         self.pb_start.setIcon(icon5)
         self.pb_start.setFlat(True)
 
