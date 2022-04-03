@@ -1,0 +1,426 @@
+﻿
+[Header]
+ProjectFileVersion = 1.1
+[General]
+Program name = pXRF An Content Calculator
+Program version = 0.1.0
+Windows 2000 = 0
+Windows XP = 0
+Windows Server 2003 = 0
+Windows Vista = 0
+Windows Server 2008 = 0
+Windows 7 = 1
+Windows 8 = 1
+Windows 10 = 1
+Windows Server 2016 = 1
+DoNotCheckOS = 0
+Company name = itzadn - Alex TONDOH
+Website = https://github.com/itzadn/pXRF_An_Content_Calculator
+SFA = 0
+DFA = 1
+Comp = 1
+[Graphics]
+Wizard image = <main>
+Header image = <main>
+Show Label = 1
+VisualStylesEnabled = 1
+[Files]
+Installation path = <ProgramFiles>\<AppName>\
+Autcip = 1
+[Uninstall]
+Vwau = 0
+Website = https://
+Include uninstaller = 1
+Uninstaller filename = Uninstall
+UseCustomDisplayIcon = 0
+CustomDisplayIcon = <InstallPath>\
+[Licence]
+Licence dialog = 1
+[Finish]
+Sart program = 1
+Reboot computer = 0
+Program = <InstallPath>\
+ProgramArguments = 
+[Shortcuts]
+Allowtc = 0
+Shortcut path = <Company>\<AppName>\
+[Serialoptions]
+Allows = 0
+Number = 1000
+Mask = #####-#####-#####-#####
+[SplashScreen]
+Image = D:\TD Labs\pXRF_An_Content_Calculator\ui\img\logo.png
+Sound = 
+Time = 2
+PlaySound = 0
+Allow = 1
+[Build]
+File = D:\TD Labs\pXRF_An_Content_Calculator\exe\pXRFAnContentCalculator.exe
+SetupIconPath = D:\TD Labs\pXRF_An_Content_Calculator\logo.ico
+UninstallIconPath = D:\TD Labs\pXRF_An_Content_Calculator\logo.ico
+CompressionMethod = 0
+CompressionLevel = 2
+[Updater]
+Allow = 0
+1 = <AppName>
+2 = <AppVersion>
+3 = http://
+4 = http://
+5 = http://
+6 = Update
+Language = 0
+RunProg = 
+RunProgs = 0
+Execdlls = 0
+[Languages]
+3
+[Files/Dirs]
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\_asyncio.pyd
+60 KB
+pyd
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\_bz2.pyd
+78 KB
+pyd
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\_ctypes.pyd
+117 KB
+pyd
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\_decimal.pyd
+243 KB
+pyd
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\_elementtree.pyd
+121.5 KB
+pyd
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\_hashlib.pyd
+59.5 KB
+pyd
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\_lzma.pyd
+150.5 KB
+pyd
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\_multiprocessing.pyd
+30 KB
+pyd
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\_overlapped.pyd
+45 KB
+pyd
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\_queue.pyd
+27 KB
+pyd
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\_socket.pyd
+73.5 KB
+pyd
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\_ssl.pyd
+153 KB
+pyd
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\api-ms-win-core-console-l1-1-0.dll
+20.5 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\api-ms-win-core-datetime-l1-1-0.dll
+20 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\api-ms-win-core-debug-l1-1-0.dll
+20.1 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\api-ms-win-core-errorhandling-l1-1-0.dll
+20 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\api-ms-win-core-file-l1-1-0.dll
+23.5 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\api-ms-win-core-file-l1-2-0.dll
+20 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\api-ms-win-core-file-l2-1-0.dll
+20 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\api-ms-win-core-handle-l1-1-0.dll
+20 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\api-ms-win-core-heap-l1-1-0.dll
+20.5 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\api-ms-win-core-interlocked-l1-1-0.dll
+20 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\api-ms-win-core-libraryloader-l1-1-0.dll
+21.1 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\api-ms-win-core-localization-l1-2-0.dll
+22.5 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\api-ms-win-core-memory-l1-1-0.dll
+20.5 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\api-ms-win-core-namedpipe-l1-1-0.dll
+20 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\api-ms-win-core-processenvironment-l1-1-0.dll
+21 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\api-ms-win-core-processthreads-l1-1-0.dll
+22 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\api-ms-win-core-processthreads-l1-1-1.dll
+20.6 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\api-ms-win-core-profile-l1-1-0.dll
+19.5 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\api-ms-win-core-rtlsupport-l1-1-0.dll
+20.6 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\api-ms-win-core-string-l1-1-0.dll
+20 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\api-ms-win-core-synch-l1-1-0.dll
+22 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\api-ms-win-core-synch-l1-2-0.dll
+20.5 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\api-ms-win-core-sysinfo-l1-1-0.dll
+21 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\api-ms-win-core-timezone-l1-1-0.dll
+20.5 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\api-ms-win-core-util-l1-1-0.dll
+20 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\api-ms-win-crt-conio-l1-1-0.dll
+21 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\api-ms-win-crt-convert-l1-1-0.dll
+24 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\api-ms-win-crt-environment-l1-1-0.dll
+20.5 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\api-ms-win-crt-filesystem-l1-1-0.dll
+22 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\api-ms-win-crt-heap-l1-1-0.dll
+21 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\api-ms-win-crt-locale-l1-1-0.dll
+20.5 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\api-ms-win-crt-math-l1-1-0.dll
+28.8 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\api-ms-win-crt-process-l1-1-0.dll
+21.1 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\api-ms-win-crt-runtime-l1-1-0.dll
+24.5 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\api-ms-win-crt-stdio-l1-1-0.dll
+26 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\api-ms-win-crt-string-l1-1-0.dll
+26 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\api-ms-win-crt-time-l1-1-0.dll
+22.5 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\api-ms-win-crt-utility-l1-1-0.dll
+20.5 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\base_library.zip
+812.1 KB
+zip
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\libcrypto-1_1.dll
+3.3 MB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\libffi-7.dll
+32 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\libopenblas.EL2C6PLE4ZYW3ECEVIV3OXXGRN2NRFM2.gfortran-win_amd64.dll
+34.2 MB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\libssl-1_1.dll
+682.4 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\logo.ico
+25.8 KB
+ico
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\MSVCP140.dll
+554.4 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\MSVCP140_1.dll
+30.8 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\MSVCP140_2.dll
+198.8 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\opengl32sw.dll
+20 MB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\pXRF An Content Calculator.exe
+3.9 MB
+exe
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\pyexpat.pyd
+189.5 KB
+pyd
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\pyside6.abi3.dll
+197.3 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\python3.dll
+61 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\python310.dll
+4.2 MB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\Qt6Core.dll
+5.3 MB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\Qt6Gui.dll
+7.1 MB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\Qt6Network.dll
+1.4 MB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\Qt6OpenGL.dll
+1.8 MB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\Qt6Qml.dll
+4.1 MB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\Qt6QmlModels.dll
+554.8 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\Qt6Quick.dll
+4.7 MB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\Qt6Svg.dll
+353.8 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\Qt6VirtualKeyboard.dll
+919.8 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\Qt6Widgets.dll
+5.7 MB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\select.pyd
+25.5 KB
+pyd
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\shiboken6.abi3.dll
+276.8 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\ucrtbase.dll
+1002 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\unicodedata.pyd
+1.1 MB
+pyd
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\VCRUNTIME140.dll
+94.9 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\VCRUNTIME140_1.dll
+36.4 KB
+dll
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\altgraph-0.17.2.dist-info\
+N/A
+[Folder]
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\numpy\
+N/A
+[Folder]
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\PIL\
+N/A
+[Folder]
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\pyinstaller-4.10.dist-info\
+N/A
+[Folder]
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\PySide6\
+N/A
+[Folder]
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\setuptools-58.1.0.dist-info\
+N/A
+[Folder]
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\shiboken6\
+N/A
+[Folder]
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\ui\
+N/A
+[Folder]
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\ui\img\
+N/A
+[Folder]
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\PySide6\translations\
+N/A
+[Folder]
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\PySide6\plugins\
+N/A
+[Folder]
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\PySide6\plugins\iconengines\
+N/A
+[Folder]
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\PySide6\plugins\imageformats\
+N/A
+[Folder]
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\PySide6\plugins\networkinformation\
+N/A
+[Folder]
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\PySide6\plugins\platforminputcontexts\
+N/A
+[Folder]
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\PySide6\plugins\platforms\
+N/A
+[Folder]
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\PySide6\plugins\styles\
+N/A
+[Folder]
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\PySide6\plugins\tls\
+N/A
+[Folder]
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\numpy\core\
+N/A
+[Folder]
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\numpy\fft\
+N/A
+[Folder]
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\numpy\linalg\
+N/A
+[Folder]
+D:\TD Labs\pXRF_An_Content_Calculator\dist\pXRF An Content Calculator\numpy\random\
+N/A
+[Folder]
+[Licence_Begin]
+1559
+{\rtf1\ansi\ansicpg1252\deff0\deflang2057{\fonttbl{\f0\fnil\fcharset0 Poppins Light;}{\f1\fnil\fcharset0 Arial;}}
+{\colortbl ;\red0\green0\blue0;\red255\green255\blue255;}
+\viewkind4\uc1\pard\cf1\highlight2\f0\fs22 The MIT License (MIT)\par
+\par
+\i\fs16 Copyright (c) 2022 Alex TONDOH\cf0\highlight0\i0\f1\fs20\par
+\par
+\cf1\highlight2\f0 Permission is hereby granted, free of charge, to any person obtaining a copy\par
+of this software and associated documentation files (the "Software"), to deal\par
+in the Software without restriction, including without limitation the rights\par
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell\par
+copies of the Software, and to permit persons to whom the Software is\par
+furnished to do so, subject to the following conditions:\cf0\highlight0\f1\par
+\par
+\cf1\highlight2\f0 The above copyright notice and this permission notice shall be included in\par
+all copies or substantial portions of the Software.\cf0\highlight0\f1\par
+\par
+\cf1\highlight2\f0\fs24 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\par
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\par
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\par
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\par
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\par
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\par
+THE SOFTWARE.\cf0\highlight0\f1\fs20\par
+}
+ [Licence_End]
+[Registry]
+[Variables]
+[SCs]
+Desktop
+pXRF An Content Calculator
+<InstallPath>\pXRF An Content Calculator.exe
+
+
+0
+[IFP_End]
+[Serials]
+[Serials_End]
+[Commands]
