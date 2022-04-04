@@ -1,7 +1,14 @@
-![logo](https://user-images.githubusercontent.com/13176010/161453873-3bb0d170-af29-4638-a624-62b6f2a22c7e.png)
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/13176010/161453873-3bb0d170-af29-4638-a624-62b6f2a22c7e.png" alt="Simple Icons" width=256>
+  <p align="center">
+  Calcul An Content from pXRF plagioclase analysis. 
+  Take probe reference data and pxrf calibration data (same for probe data)
+  </p>
+</p>
 
-Calcul An Content from pXRF plagioclase analysis. 
-Take probe reference data and pxrf calibration data (same for probe data)
+<p align="center">
+  <img src="https://img.shields.io/pypi/l/pipenv.svg"> <img src="https://img.shields.io/badge/python-3.10-brightgreen">
+</p>
 
 ### Features
 
