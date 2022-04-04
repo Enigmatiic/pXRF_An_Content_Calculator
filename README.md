@@ -31,4 +31,4 @@
 #### Extract Result
 - Extract all showing table to an excel format and save it where you want
 
-Download : [pXRF An Content Calculator Software - installer](https://github.com/itzadn/pXRF_An_Content_Calculator/blob/master/exe/pXRFAnContentCalculator.exe)
+Download : [pXRF An Content Calculator Software - installer](https://github.com/itzadn/pXRF_An_Content_Calculator/blob/master/exe/pXRF%20An%20Content%20Calculator.msi)
